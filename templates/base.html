@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{% static 'imgs/leaves.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+    <!-- Blue Accent Background -->
+    <div class="min-height-200 bg-primary position-absolute w-100"></div>
+    
+    <!-- Sidenav -->
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+        id="sidenav-main" data-color="primary">
+
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0 primary" href="#" target="_blank">
+                <img src="{% static 'imgs/leaves.png' %}" class="navbar-brand-img h-100">
+                <span class="ms-1 font-weight-bold">Gestão de Resíduos</span>
+            </a>
+        </div>
+
+        <hr class="horizontal dark mt-0">
+
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item">
+                    <a class="nav-link active" href="/">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-chart-bar-32 text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Início</span>
+                    </a>
+                </li> -->
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-chart-bar-32 text-primary text-sm opacity-9"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Início</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'entrada' %}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bold-down text-primary text-sm opacity-9"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Entrada</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'saida' %}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bold-up text-primary text-sm opacity-9"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Saída</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'localidade' %}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-pin-3 text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Localidades</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'classe' %}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-tag text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Classe de Resíduos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'fornecedor' %}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-shop text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Fornecedores</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content position-relative border-radius-lg ">
+        
+        <!-- Top Title + Login -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+            data-scroll="false">
+            <div class="container-fluid px-2">
+                
+                <!-- Page Title -->
+                <h1 class="font-weight-bolder text-white mb-2 mt-3">Gestão de Resíduos</h1>
+        
+                <!-- Top Right Login Menu -->
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-auto d-flex align-items-center">
+                        <a href="#" class="nav-link text-white font-weight-bold px-0">
+                            <i class="fa fa-user me-sm-1"></i>
+                            <span class="d-sm-inline d-none">Login</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid pb-4">
+            <div class="row">
+                <div class="card col mb-xl-0 mb-4 ">
+                    <div class="card-body min-height-500">
+                        {% block pagecontent %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!--   Core JS Files   -->
+    <script src="{% static 'argon-dashboard/assets/js/core/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

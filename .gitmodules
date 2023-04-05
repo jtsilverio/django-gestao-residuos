@@ -1,0 +1,3 @@
+[submodule "static/argon-dashboard"]
+	path = static/argon-dashboard
+	url = https://github.com/creativetimofficial/argon-dashboard.git
