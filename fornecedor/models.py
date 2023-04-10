@@ -5,7 +5,7 @@ class Destinacao(models.Model):
     nome = models.CharField(max_length=50)
     
     def __str__(self):
-        return self.nome
+        return f"{self.id_destinacao}: {self.nome}"
     
     class Meta:
         db_table = "destinacao"
@@ -19,7 +19,7 @@ class Fornecedor(models.Model):
     id_destinacao = models.ManyToManyField(Destinacao, db_table="fornecedor_destinacao", related_name="destinacao")
     
     def __str__(self):
-        return self.nome
+        return f"{self.id_fornecedor}: {self.nome}"
     
     class Meta:
         db_table = "fornecedor"

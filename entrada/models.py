@@ -9,5 +9,8 @@ class Entrada(models.Model):
     dt_entrada = models.DateField()
     peso = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+            return f"ID:{self.id_entrada}"
+    
     class Meta:
         db_table = "entrada"
