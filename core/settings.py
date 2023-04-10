@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "entrada.apps.EntradaConfig",
     "saida.apps.SaidaConfig",
     "fornecedor.apps.FornecedorConfig",
+    "fontawesomefree"
 ]
 
 MIDDLEWARE = [
