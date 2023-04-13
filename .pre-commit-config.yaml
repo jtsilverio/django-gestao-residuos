@@ -1,0 +1,15 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: ".md$"
+repos:
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        description: "Black: The uncompromising Python code formatter"
+        entry: black
+        require_serial: true
+        language: python
+        types_or: [python, pyi]
+        args: ["--line-length=79", "--preview"]
+
