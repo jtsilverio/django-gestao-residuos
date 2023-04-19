@@ -30,3 +30,9 @@ requirements: pip-compile
 ## Synchronize the Python Dependencies & Virtual Env
 sync-env: pip-compile
 	pip-sync requirements.txt requirements-dev.txt
+
+scss:
+	sass core/static/scss/volt.scss core/static/css/volt.css
+
+black:
+	black . --line-length 79 --exclude venv

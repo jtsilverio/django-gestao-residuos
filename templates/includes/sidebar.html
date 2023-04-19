@@ -1,0 +1,184 @@
+{% load static %}
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+    <a class="navbar-brand me-lg-5" href="/">
+        <img class="navbar-brand-dark" src="{% static 'img/brand/leaves.png' %}" alt="Volt logo" />
+        <img class="navbar-brand-light" src="{% static 'img/brand/leaves.png' %}" alt="Volt logo" />
+    </a>
+    <div class="d-flex align-items-center">
+        <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+
+    <!-- Mobile Part -->
+    <div class="sidebar-inner px-4 pt-3">
+        <!-- Menu -->
+        <ul class="nav flex-column pt-3 pt-md-0">
+
+            <!-- Title -->
+            <li class="nav-item nav-link">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="sidebar-icon">
+                            <img src="{% static 'img/brand/leaves.png' %}" height="20" width="20" alt="Volt Logo">
+                        </span>
+                        <span class="mt-1 ms-1 sidebar-text">Gestão de Resíduos</span>
+                    </div>
+                    
+                    <!-- Close Button -->
+                    <div class="collapse-close d-md-none">
+                        <a href="#sidebarMenu" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                            aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
+                            <svg class="icon icon-xs" fill="#ffffff" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="mt-2 mb-4 border-gray-400">
+
+            <!-- HOME -->
+            <li class="nav-item {% if 'home' in segment %} active {% endif %}">
+                <a href="{% url 'home' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Home</span>
+                </a>
+            </li>
+
+            <!-- Entrada -->
+            <li class="nav-item {% if 'entrada' in segment %} active {% endif %}">
+                <a href="{% url 'entrada' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M5.478 5.559A1.5 1.5 0 016.912 4.5H9A.75.75 0 009 3H6.912a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H15a.75.75 0 000 1.5h2.088a1.5 1.5 0 011.434 1.059l2.213 7.191H17.89a3 3 0 00-2.684 1.658l-.256.513a1.5 1.5 0 01-1.342.829h-3.218a1.5 1.5 0 01-1.342-.83l-.256-.512a3 3 0 00-2.684-1.658H3.265l2.213-7.191z"
+                                fill-rule="evenodd"></path>
+                            <path clip-rule="evenodd"
+                                d="M12 2.25a.75.75 0 01.75.75v6.44l1.72-1.72a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 011.06-1.06l1.72 1.72V3a.75.75 0 01.75-.75z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Entrada</span>
+                </a>
+            </li>
+
+            <!-- Saída -->
+            <li class="nav-item {% if 'saida' in segment %} active {% endif %}">
+                <a href="{% url 'saida' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.5 3c-1.051 0-2.093.04-3.125.117A1.49 1.49 0 002 4.607V10.5h9V4.606c0-.771-.59-1.43-1.375-1.489A41.568 41.568 0 006.5 3zM2 12v2.5A1.5 1.5 0 003.5 16h.041a3 3 0 015.918 0h.791a.75.75 0 00.75-.75V12H2z">
+                            </path>
+                            <path
+                                d="M6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM13.25 5a.75.75 0 00-.75.75v8.514a3.001 3.001 0 014.893 1.44c.37-.275.61-.719.595-1.227a24.905 24.905 0 00-1.784-8.549A1.486 1.486 0 0014.823 5H13.25zM14.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                            </path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Saída</span>
+                </a>
+            </li>
+
+            <!-- Localidade -->
+            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
+                <a href="{% url 'localidade' %}" class="nav-link">
+                    <span class="sidebar-icon">
+
+                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M8.161 2.58a1.875 1.875 0 011.678 0l4.993 2.498c.106.052.23.052.336 0l3.869-1.935A1.875 1.875 0 0121.75 4.82v12.485c0 .71-.401 1.36-1.037 1.677l-4.875 2.437a1.875 1.875 0 01-1.676 0l-4.994-2.497a.375.375 0 00-.336 0l-3.868 1.935A1.875 1.875 0 012.25 19.18V6.695c0-.71.401-1.36 1.036-1.677l4.875-2.437zM9 6a.75.75 0 01.75.75V15a.75.75 0 01-1.5 0V6.75A.75.75 0 019 6zm6.75 3a.75.75 0 00-1.5 0v8.25a.75.75 0 001.5 0V9z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Localidade</span>
+                </a>
+            </li>
+
+            <!-- Classe -->
+            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
+                <a href="{% url 'classe' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M5.25 2.25a3 3 0 00-3 3v4.318a3 3 0 00.879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 005.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 00-2.122-.879H5.25zM6.375 7.5a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Classe</span>
+                </a>
+            </li>
+
+            <!-- Fornecedores -->
+            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
+                <a href="{% url 'fornecedor' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 007.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 004.902-5.652l-1.3-1.299a1.875 1.875 0 00-1.325-.549H5.223z">
+                            </path>
+                            <path clip-rule="evenodd"
+                                d="M3 20.25v-8.755c1.42.674 3.08.673 4.5 0A5.234 5.234 0 009.75 12c.804 0 1.568-.182 2.25-.506a5.234 5.234 0 002.25.506c.804 0 1.567-.182 2.25-.506 1.42.674 3.08.675 4.5.001v8.755h.75a.75.75 0 010 1.5H2.25a.75.75 0 010-1.5H3zm3-6a.75.75 0 01.75-.75h3a.75.75 0 01.75.75v3a.75.75 0 01-.75.75h-3a.75.75 0 01-.75-.75v-3zm8.25-.75a.75.75 0 00-.75.75v5.25c0 .414.336.75.75.75h3a.75.75 0 00.75-.75v-5.25a.75.75 0 00-.75-.75h-3z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Fornecedor</span>
+                </a>
+            </li>
+
+            <!-- Destinação -->
+            <li class="nav-item {% if 'destinacao' in segment %} active {% endif %}">
+                <a href="{% url 'destinacao' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Destinação</span>
+                </a>
+            </li>
+
+            <!-- Divisão -->
+            <hr class="mt-4 mb-4 border-gray-400">
+
+            <!-- Admin -->
+            <li class="nav-item">
+                <a target="_blank" href="{% url 'admin:index' %}" class="nav-link d-flex align-items-center">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Administrador</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>

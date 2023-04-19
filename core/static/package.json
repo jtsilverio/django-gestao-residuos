@@ -1,0 +1,34 @@
+{
+    "name": "@themesberg/volt-bootstrap-5-dashboard",
+    "version": "1.4.1",
+    "description": "Volt - Bootstrap 5 Dashboard",
+    "main": "gulpfile.js",
+    "author": "Themesberg",
+    "keywords": [
+        "bootstrap",
+        "bootstrap5",
+        "bootstrap-5",
+        "bootstrap 5",
+        "bootstrap 5 dashboard",
+        "bootstrap 5 admin dashboard",
+        "dashboard vanilla js",
+        "admin dashboard vanilla js",
+        "bootstrap template vanilla js",
+        "bootstrap 5 chart",
+        "bootstrap 5 datepicker",
+        "bootstrap 5 beta 1"
+    ],
+    "homepage": "https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard",
+    "bugs": {
+        "url": "https://github.com/themesberg/volt-bootstrap-5-dashboard/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/themesberg/volt-bootstrap-5-dashboard"
+    },
+    "license": "https://github.com/themesberg/volt-bootstrap-5-dashboard/blob/master/LICENSE.md",
+    "dependencies": {
+        "@popperjs/core": "^2.9.2",
+        "bootstrap": "^5.0.2"
+    }
+}
