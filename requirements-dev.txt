@@ -4,8 +4,6 @@
 #
 #    pip-compile --no-emit-index-url requirements-dev.in
 #
-astroid==2.15.2
-    # via pylint
 black==23.3.0
     # via -r requirements-dev.in
 build==0.10.0
@@ -17,25 +15,36 @@ charset-normalizer==3.1.0
 click==8.1.3
     # via
     #   black
+    #   djlint
     #   pip-tools
-dill==0.3.6
-    # via pylint
+colorama==0.4.6
+    # via djlint
+cssbeautifier==1.14.7
+    # via djlint
 distlib==0.3.6
     # via virtualenv
+djlint==1.23.1
+    # via -r requirements-dev.in
 docformatter==1.6.0
     # via -r requirements-dev.in
+editorconfig==0.12.3
+    # via
+    #   cssbeautifier
+    #   jsbeautifier
 filelock==3.11.0
     # via virtualenv
+html-tag-names==0.1.2
+    # via djlint
+html-void-elements==0.1.0
+    # via djlint
 identify==2.5.22
     # via pre-commit
 isort==5.12.0
+    # via -r requirements-dev.in
+jsbeautifier==1.14.7
     # via
-    #   -r requirements-dev.in
-    #   pylint
-lazy-object-proxy==1.9.0
-    # via astroid
-mccabe==0.7.0
-    # via pylint
+    #   cssbeautifier
+    #   djlint
 mypy-extensions==1.0.0
     # via black
 nodeenv==1.7.0
@@ -45,46 +54,49 @@ packaging==23.0
     #   black
     #   build
 pathspec==0.11.1
-    # via black
+    # via
+    #   black
+    #   djlint
 pip-tools==6.13.0
     # via -r requirements-dev.in
 platformdirs==3.2.0
     # via
     #   black
-    #   pylint
     #   virtualenv
 pre-commit==3.2.2
     # via -r requirements-dev.in
 pre-commit-hooks==4.4.0
     # via -r requirements-dev.in
-pylint==2.17.2
-    # via -r requirements-dev.in
 pyproject-hooks==1.0.0
     # via build
 pyyaml==6.0
-    # via pre-commit
+    # via
+    #   djlint
+    #   pre-commit
+regex==2023.3.23
+    # via djlint
 ruamel-yaml==0.17.21
     # via pre-commit-hooks
 ruamel-yaml-clib==0.2.7
     # via ruamel-yaml
+six==1.16.0
+    # via
+    #   cssbeautifier
+    #   jsbeautifier
 tomli==2.0.1
     # via
     #   black
     #   build
+    #   djlint
     #   pre-commit-hooks
-    #   pylint
-tomlkit==0.11.7
-    # via pylint
-typing-extensions==4.5.0
-    # via astroid
+tqdm==4.65.0
+    # via djlint
 untokenize==0.1.1
     # via docformatter
 virtualenv==20.21.0
     # via pre-commit
 wheel==0.40.0
     # via pip-tools
-wrapt==1.15.0
-    # via astroid
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip

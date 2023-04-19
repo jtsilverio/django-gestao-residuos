@@ -8,7 +8,5 @@ asgiref==3.6.0
     # via django
 django==4.2
     # via -r requirements.in
-fontawesomefree==6.4.0
-    # via -r requirements.in
 sqlparse==0.4.3
     # via django
