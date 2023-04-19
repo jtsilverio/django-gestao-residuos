@@ -37,7 +37,7 @@
 
 <body>
 
-    {% include 'includes/sidebar.html' %}
+    {% include "includes/sidebar.html" %}
 
     <main class="content">
 
@@ -46,7 +46,11 @@
             <div class="container-fluid px-0">
                 <div class="d-flex justify-content-between w-200" id="navbarSupportedContent">
                     <div class="d-flex align-items-center">
-                        <h3>{% block title %}{% endblock %}</h3>
+                        <div class="px-2 pb-2">
+                            <h2>
+                            {% block title %}{% endblock title %}
+                            </h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,11 +58,11 @@
 
         {% block content %}{% endblock content %}
 
-        {% include 'includes/footer.html' %}
+        {% include "includes/footer.html" %}
 
     </main>
 
-    {% include 'includes/scripts.html' %}
+    {% include "includes/scripts.html" %}
 
     <!-- Specific Page JS goes HERE  -->
     {% block javascripts %}{% endblock javascripts %}
