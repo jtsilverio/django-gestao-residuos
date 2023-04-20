@@ -5,4 +5,4 @@
 
 # Set up para desenvolvimento:
 - instalar as dependencias de desenvolvimento usando: `pip install -r requirements-dev.txt`
-- para rodar o servidor de denvolvimento: python manage.py runserver
+- para rodar o servidor de denvolvimento: `python manage.py runserver`
