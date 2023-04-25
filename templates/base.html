@@ -37,7 +37,7 @@
 
 <body>
 
-    {% include "includes/sidebar.html" %}
+    {% include "partials/sidebar.html" %}
 
     <main class="content">
 
@@ -58,11 +58,11 @@
 
         {% block content %}{% endblock content %}
 
-        {% include "includes/footer.html" %}
+        {% include "partials/footer.html" %}
 
     </main>
 
-    {% include "includes/scripts.html" %}
+    {% include "partials/scripts.html" %}
 
     <!-- Specific Page JS goes HERE  -->
     {% block javascripts %}{% endblock javascripts %}
