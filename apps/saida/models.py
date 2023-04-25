@@ -1,8 +1,8 @@
 from django.db import models
-from classe.models import Classe
-from localidade.models import Localidade
-from fornecedor.models import Fornecedor
-from fornecedor.models import Destinacao
+from apps.classe.models import Classe
+from apps.localidade.models import Localidade
+from apps.fornecedor.models import Fornecedor
+from apps.fornecedor.models import Destinacao
 from django.contrib import admin
 
 

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SaidaConfig(AppConfig):
+class ClasseConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "saida"
+    name = "apps.classe"

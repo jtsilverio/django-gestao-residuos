@@ -1,6 +1,6 @@
 from django.db import models
-from classe.models import Classe
-from localidade.models import Localidade
+from apps.classe.models import Classe
+from apps.localidade.models import Localidade
 
 
 class Entrada(models.Model):

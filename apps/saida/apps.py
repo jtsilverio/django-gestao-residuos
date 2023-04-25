@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class LocalidadeConfig(AppConfig):
+class SaidaConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "localidade"
+    name = "apps.saida"
