@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_filters',
     "apps.localidade.apps.LocalidadeConfig",
     "apps.classe.apps.ClasseConfig",
     "apps.entrada.apps.EntradaConfig",
@@ -121,9 +122,11 @@ LANGUAGE_CODE = "pt-br"
 
 TIME_ZONE = "America/Sao_Paulo"
 
-USE_I18N = True
+USE_I18N = False
 
 USE_TZ = True
+
+DATE_INPUT_FORMATS = ("%d/%m/%Y", '%Y-%m-%d')
 
 
 # Static files (CSS, JavaScript, Images)
