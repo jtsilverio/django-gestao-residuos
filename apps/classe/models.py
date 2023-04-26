@@ -6,7 +6,7 @@ class Classe(models.Model):
     nome = models.CharField(max_length=50, null=False, blank=False)
 
     def __str__(self):
-        return f"{self.id_classe}: {self.nome}"
+        return f"{self.nome}"
 
     class Meta:
         db_table = "classe"

@@ -7,7 +7,7 @@ class Localidade(models.Model):
     nome = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
-        return f"{self.id_localidade}: {self.nome}"
+        return f"{self.nome}"
 
     class Meta:
         db_table = "localidade"
