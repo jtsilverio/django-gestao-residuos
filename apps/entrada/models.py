@@ -21,3 +21,4 @@ class Entrada(models.Model):
 
     class Meta:
         db_table = "entrada"
+        ordering = ["-id_entrada"]
