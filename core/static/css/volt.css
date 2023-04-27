@@ -25287,4 +25287,15 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
   z-index: 9999;
 }
 
+.toast {
+  font-size: 1.1rem;
+}
+
+#django-message {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+
 /*# sourceMappingURL=volt.css.map */
