@@ -8,26 +8,21 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Favicon -->
-        <link rel="apple-touch-icon"
-              sizes="120x120"
-              href="{% static 'img/favicon/apple-touch-icon.png' %}">
         <link rel="icon"
               type="image/png"
               sizes="32x32"
-              href="{% static 'img/favicon/favicon-32x32.png' %}">
+              href="{% static 'img/brand/leaves_32.png' %}">
         <link rel="icon"
               type="image/png"
               sizes="16x16"
-              href="{% static 'img/favicon/favicon-16x16.png' %}">
-        <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}">
-        <link rel="mask-icon"
-              href="{% static 'static/assets/img/favicon/safari-pinned-tab.svg' %}"
-              color="#ffffff">
+              href="{% static 'img/brand/leaves_16.png' %}">
+
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="theme-color" content="#ffffff">
         <link type="text/css" href="{% static 'css/volt.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <!-- Specific Page JS goes HERE  -->
+
+        <!-- Specific Page CSS goes HERE  -->
         {% block stylesheets %}
         {% endblock stylesheets %}
     </head>
@@ -35,23 +30,7 @@
         {% include "partials/sidebar.html" %}
         <main class="content">
 
-            {% if messages %}
-            {% for message in messages %}
-                <div id="django-message" class="toast align-items-center text-white bg-success bg-opacity-85 fade">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            <i class="bi bi-check-circle-fill"></i>
-                            {{message}}
-                        </div>
-                        <button type="button"
-                                class="btn-close btn-close-white me-2 m-auto"
-                                data-bs-dismiss="toast"
-                                aria-label="Close"
-                                id ="django-message-btn"></button>
-                    </div>
-                </div>
-            {% endfor %}
-            {% endif %}
+            {% include "partials/messages.html" %}
 
             <!-- NAVBAR -->
             <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
@@ -76,6 +55,7 @@
             {% include "partials/footer.html" %}
         </main>
         {% include "partials/scripts.html" %}
+
         <!-- Specific Page JS goes HERE  -->
         {% block javascripts %}
         {% endblock javascripts %}
