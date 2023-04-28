@@ -25,8 +25,8 @@
             <table class="table table-centered mb-0 rounded">
                 <thead class="thead-light">
                     <tr>
-                        <th class="border-0 rounded-start">ID</th>
-                        <th class="border-0">Data</th>
+                        {% comment %} <th class="border-0 rounded-start">ID</th> {% endcomment %}
+                        <th class="border-0 rounded-start">Data</th>
                         <th class="border-0">Classe</th>
                         <th class="border-0">Localidade</th>
                         <th class="border-0">Peso (kg)</th>
@@ -37,7 +37,7 @@
                 <tbody>
                     {% for entrada in entradas %}
                     <tr>
-                        <td>{{ entrada.id_entrada }}</td>
+                        {% comment %} <td>{{ entrada.id_entrada }}</td> {% endcomment %}
                         <td>{{ entrada.dt_entrada }}</td>
                         <td>{{ entrada.id_classe }}</td>
                         <td>{{ entrada.id_localidade }}</td>
