@@ -27,9 +27,11 @@
         {% endblock stylesheets %}
     </head>
     <body>
+        <!-- SIDEBAR -->
         {% include "partials/sidebar.html" %}
-        <main class="content">
 
+        <main class="content">
+            <!-- alerts -->
             {% include "partials/messages.html" %}
 
             <!-- NAVBAR -->
@@ -54,9 +56,9 @@
             {% endblock content %}
             {% include "partials/footer.html" %}
         </main>
-        {% include "partials/scripts.html" %}
 
-        <!-- Specific Page JS goes HERE  -->
+        <!-- JS  -->
+        {% include "partials/scripts.html" %}
         {% block javascripts %}
         {% endblock javascripts %}
     </body>
