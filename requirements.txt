@@ -7,6 +7,10 @@
 asgiref==3.6.0
     # via django
 django==4.2
+    # via
+    #   -r requirements.in
+    #   django-filter
+django-filter==23.2
     # via -r requirements.in
 sqlparse==0.4.3
     # via django
