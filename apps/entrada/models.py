@@ -11,7 +11,7 @@ class Entrada(models.Model):
     )
     id_localidade = models.ForeignKey(
         Localidade, models.DO_NOTHING, db_column="id_localidade"
-    )
+    )   
     peso = models.DecimalField(
         max_digits=10, decimal_places=2, default=0, null=False, blank=False
     )

@@ -1,0 +1,19 @@
+{% load static %}
+<!-- create django pagination styled with bootstrap 5 -->
+<div class="mt-3 d-flex justify-content-start">
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.peso %}&peso={{ request.GET.peso }}{% endif %}">&laquo; previous</a>
+            {% endif %}
+    
+            <span class="current-page">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if request.GET.peso %}&peso={{ request.GET.peso }}{% endif %}">next &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</di>

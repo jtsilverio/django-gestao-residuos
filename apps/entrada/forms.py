@@ -22,8 +22,11 @@ class EntradaForm(forms.ModelForm):
 
         widgets = {
             "dt_entrada": forms.DateInput(
-                format=('%Y-%m-%d'),
-                attrs={"class": "form-control", "type": "date",}
+                format=("%Y-%m-%d"),
+                attrs={
+                    "class": "form-control",
+                    "type": "date",
+                },
             ),
             "id_localidade": forms.Select(
                 attrs={"class": "form-select", "placeholder": "Localidade"}

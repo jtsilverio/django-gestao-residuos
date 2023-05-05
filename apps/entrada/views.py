@@ -1,22 +1,39 @@
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, UpdateView
+from django.views.generic import UpdateView
+from django_filters.views import FilterView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from apps.entrada.forms import EntradaForm
 from apps.entrada.models import Entrada
+from apps.entrada.forms import EntradaForm
+from apps.entrada.filters import EntradaFilter
 
 
-class entrada(ListView):
+class EntradaIndex(FilterView):
     model = Entrada
     context_object_name = "entradas"
     template_name = "entrada/entrada.html"
-    paginate_by = 20
+    filterset_class = EntradaFilter
+    paginate_by = 15
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        # Filter the queryset based on the request parameters
+        if self.request.GET.get("field_peso"):
+            queryset = queryset.filter(
+                peso__gt=self.request.GET.get("field_peso")
+            )
+            queryset = queryset.filter(
+                peso__lt=self.request.GET.get("field_peso")
+            )
+
+        return queryset
 
 
-class entrada_edit(SuccessMessageMixin, UpdateView):
+class EntradaEdit(SuccessMessageMixin, UpdateView):
     model = Entrada
     form_class = EntradaForm
     template_name = "entrada/entrada_edit.html"
@@ -35,8 +52,8 @@ def entrada_cadastro(request):
             messages.error(request, "Erro ao salvar")
     else:
         form = EntradaForm()
-    
-    return render(request, "entrada/entrada_cadastro.html", {'form': form})
+
+    return render(request, "entrada/entrada_cadastro.html", {"form": form})
 
 
 def delete_cadastro(request, pk):
