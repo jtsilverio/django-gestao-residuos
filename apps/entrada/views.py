@@ -1,36 +1,30 @@
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import UpdateView
-from django_filters.views import FilterView
-from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator
 
-from apps.entrada.models import Entrada
-from apps.entrada.forms import EntradaForm
 from apps.entrada.filters import EntradaFilter
+from apps.entrada.forms import EntradaForm
+from apps.entrada.models import Entrada
 
+PAGESIZE = 15
 
-class EntradaIndex(FilterView):
-    model = Entrada
-    context_object_name = "entradas"
-    template_name = "entrada/entrada.html"
-    filterset_class = EntradaFilter
-    paginate_by = 15
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-
-        # Filter the queryset based on the request parameters
-        if self.request.GET.get("field_peso"):
-            queryset = queryset.filter(
-                peso__gt=self.request.GET.get("field_peso")
-            )
-            queryset = queryset.filter(
-                peso__lt=self.request.GET.get("field_peso")
-            )
-
-        return queryset
+def entrada_index(request):
+    page_number = request.GET.get("page")
+    entradas_filter = EntradaFilter(request.GET,
+                             queryset=Entrada.objects.all())
+    
+    entradas_paginated = Paginator(entradas_filter.qs, PAGESIZE)
+    entradas = entradas_paginated.get_page(page_number)
+    
+    context = {
+        "object_list": entradas,
+        "filter_form": entradas_filter.form,
+    }
+    return render(request, "entrada/entrada.html", context)
 
 
 class EntradaEdit(SuccessMessageMixin, UpdateView):

@@ -5,8 +5,8 @@
     <div class="card-body">
         <form id="entrada-filter" method="get">
             <div class="row g-2">
-                {% for field in filter.form %}
-                <div class="col me-7">
+                {% for field in filter_form %}
+                <div class="col me-3">
 
                     {% if field|is_checkbox %}
                         {{ field.label_tag }}

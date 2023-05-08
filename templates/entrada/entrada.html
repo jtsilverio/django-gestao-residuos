@@ -24,21 +24,21 @@ Entrada
         </div>
 
         <div class="table-responsive">
-            <table class="table table-centered mb-0 rounded">
+            <table class="table table-centered mb-0 rounded table-sm">
                 <thead class="thead-light">
                     <tr>
                         <!-- <th class="border-0 rounded-start">ID</th> -->
-                        <th class="border-0 rounded-start">Data</th>
-                        <th class="border-0">Classe</th>
-                        <th class="border-0">Localidade</th>
-                        <th class="border-0">Peso (kg)</th>
-                        <th class="border-0 rounded-end"></th>
+                        <th class="align-middle border-0 rounded-start">Data</th>
+                        <th class="align-middle border-0">Classe</th>
+                        <th class="align-middle border-0">Localidade</th>
+                        <th class="align-middle border-0">Peso (kg)</th>
+                        <th class="align-middle border-0 rounded-end"></th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    {% for entrada in entradas %}
-                    <tr>
+                    {% for entrada in object_list %}
+                    <tr class="align-middle">
                         <!-- <td>{{ entrada.id_entrada }}</td> -->
                         <td>{{ entrada.dt_entrada }}</td>
                         <td>{{ entrada.id_classe }}</td>

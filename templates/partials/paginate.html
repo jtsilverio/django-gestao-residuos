@@ -1,19 +1,54 @@
 {% load static %}
-<!-- create django pagination styled with bootstrap 5 -->
-<div class="mt-3 d-flex justify-content-start">
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.peso %}&peso={{ request.GET.peso }}{% endif %}">&laquo; previous</a>
+{% load page_parser %}
+<nav aria-label="Page navigation example" class="mt-4">
+    <ul class="pagination mb-0">
+        {% if object_list.has_previous %}
+            <li class="page-item">
+                <a class="page-link"
+                   href="{% page_parser 'page' 1 request.GET.urlencode %}"
+                   aria-label="First">
+                    <span aria-hidden="true">&laquo;&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link"
+                   href="{% page_parser 'page' object_list.previous_page_number request.GET.urlencode %}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for i in object_list.paginator.page_range %}
+            {% if i == object_list.number %}
+                <li class="page-item active">
+                    <a class="page-link" href="#">{{ i }} <span class="sr-only"></span></a>
+                </li>
+            {% elif i > object_list.number|add:'-10' and i < object_list.number|add:'10' %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{% page_parser 'page' i request.GET.urlencode %}">{{ i }}</a>
+                </li>
+            {% elif i == object_list.number|add:'-10' or i == object_list.number|add:'10' %}
+                <li class="page-item">
+                    <span class="page-link">&hellip;</span>
+                </li>
             {% endif %}
-    
-            <span class="current-page">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-    
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}{% if request.GET.peso %}&peso={{ request.GET.peso }}{% endif %}">next &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
-</di>
+        {% endfor %}
+        {% if object_list.has_next %}
+            <li class="page-item">
+                <a class="page-link"
+                   href="{% page_parser 'page' object_list.next_page_number request.GET.urlencode %}"
+                   aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link"
+                   href="{% page_parser 'page' object_list.paginator.num_pages request.GET.urlencode %}"
+                   aria-label="Last">
+                    <span aria-hidden="true">&raquo;&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
