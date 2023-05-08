@@ -72,6 +72,10 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            "libraries": {
+                "is_checkbox": "templatetags.is_checkbox",
+                "page_parser": "templatetags.page_parser",
+            }
         },
     },
 ]
