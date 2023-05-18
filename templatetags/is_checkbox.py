@@ -5,6 +5,6 @@ from django.forms import CheckboxInput, CheckboxSelectMultiple
 
 register = template.Library()
 
-@register.filter(name='is_checkbox')
-def is_checkbox(field):
-    return (isinstance(field.field.widget, CheckboxInput) or isinstance(field.field.widget, CheckboxSelectMultiple))
+@register.filter(name='is_multiple_choice')
+def is_multiple_choice(field):
+    return isinstance(field.field.widget, CheckboxSelectMultiple)
