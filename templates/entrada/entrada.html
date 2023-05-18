@@ -18,7 +18,7 @@ Entrada
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>Entrada
+                    </svg>Cadastro
                 </button>
             </a>
         </div>
@@ -27,10 +27,9 @@ Entrada
             <table class="table table-centered mb-0 rounded table-sm">
                 <thead class="thead-light">
                     <tr>
-                        <!-- <th class="border-0 rounded-start">ID</th> -->
                         <th class="align-middle border-0 rounded-start">Data</th>
-                        <th class="align-middle border-0">Classe</th>
                         <th class="align-middle border-0">Localidade</th>
+                        <th class="align-middle border-0">Classe</th>
                         <th class="align-middle border-0">Peso (kg)</th>
                         <th class="align-middle border-0 rounded-end"></th>
 
@@ -39,10 +38,9 @@ Entrada
                 <tbody>
                     {% for entrada in object_list %}
                     <tr class="align-middle">
-                        <!-- <td>{{ entrada.id_entrada }}</td> -->
                         <td>{{ entrada.dt_entrada }}</td>
-                        <td>{{ entrada.id_classe }}</td>
                         <td>{{ entrada.id_localidade }}</td>
+                        <td>{{ entrada.id_classe }}</td>
                         <td>{{ entrada.peso }}</td>
                         <td>
                             <div class="d-flex justify-content-start">
