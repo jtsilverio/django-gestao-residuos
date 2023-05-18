@@ -6,29 +6,27 @@
         <form id="entrada-filter" method="get">
             <div class="row g-2">
                 {% for field in filter_form %}
-                <div class="col me-3">
-
-                    {% if field|is_checkbox %}
-                        {{ field.label_tag }}
-                        {% for choice in field %}
-                        <div class="form-check">
-                            {{ choice.tag }}
-                            <label class="form-check-label">{{ choice.choice_label }}</label>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        {{ field.label_tag }}
-                        {{ field }}
-                    {% endif %}
-                </div>
+                    <div class="col me-3">
+                        {% if field|is_multiple_choice %}
+                            {{ field.label_tag }}
+                            {% for choice in field %}
+                                <div class="form-check">
+                                    {{ choice.tag }}
+                                    <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        {% endif %}
+                    </div>
                 {% endfor %}
             </div>
-            <div class="row g-2">
+            <div class="row g-2 mt-2">
                 <div class="col justify-content-start d-flex">
                     <button type="submit" class="btn btn-primary">Filtrar</button>
                 </div>
             </div>
-
         </form>
     </div>
 </section>
