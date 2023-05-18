@@ -1,13 +1,54 @@
 import django_filters
-from apps.saida.models import Saida
+from django.forms import (
+    CheckboxInput,
+    CheckboxSelectMultiple,
+    DateInput,
+    Select,
+    BooleanField,
+)
+
 from apps.classe.models import Classe
+from apps.fornecedor.models import Destinacao, Fornecedor
 from apps.localidade.models import Localidade
-from apps.fornecedor.models import Fornecedor, Destinacao
-from django.forms import DateInput, ModelChoiceField, BooleanField, ModelMultipleChoiceField, CheckboxSelectMultiple, SelectMultiple, Select, CheckboxInput, CharField
+from apps.saida.models import Saida
+
 
 class SaidaFilter(django_filters.FilterSet):
-    dt_saida = django_filters.DateFilter(label='Data de Saida', widget=DateInput(attrs={'type': 'date', 'class': 'form-control'}))
-    id_fornecedor = django_filters.ModelChoiceFilter(label='Fornecedor', queryset=Fornecedor.objects.all(), widget=Select(attrs={'class': 'form-select'}))
-    id_destinacao = django_filters.ModelChoiceFilter(label='Destinação', queryset=Destinacao.objects.all(), widget=Select(attrs={'class': 'form-select'}))
-    id_classe = django_filters.ModelMultipleChoiceFilter(label='Classe', queryset=Classe.objects.all(), widget=CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    id_localidade = django_filters.ModelMultipleChoiceFilter(label='Localidade', queryset=Localidade.objects.all(), widget=CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    dt_saida = django_filters.DateFilter(
+        label="Data de Saida",
+        widget=DateInput(attrs={"type": "date", "class": "form-control"}),
+    )
+    id_fornecedor = django_filters.ModelChoiceFilter(
+        label="Fornecedor",
+        queryset=Fornecedor.objects.all(),
+        widget=Select(attrs={"class": "form-select"}),
+    )
+    id_destinacao = django_filters.ModelChoiceFilter(
+        label="Destinação",
+        queryset=Destinacao.objects.all(),
+        widget=Select(attrs={"class": "form-select"}),
+    )
+    id_classe = django_filters.ModelMultipleChoiceFilter(
+        label="Classe",
+        queryset=Classe.objects.all(),
+        widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
+    )
+    id_localidade = django_filters.ModelMultipleChoiceFilter(
+        label="Localidade",
+        queryset=Localidade.objects.all(),
+        widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
+    )
+
+    cdf = django_filters.BooleanFilter(
+        label="CDF Vazio",
+        field_name="cdf",
+        lookup_expr="isnull",
+        widget=CheckboxInput(attrs={"class": "form-check-input"}),
+        method="filter_cdf",
+    )
+
+    def filter_cdf(self, queryset, name, value):
+        if value:
+            # Show only empty CDF
+            queryset = queryset.filter(**{f"{name}__exact": ""})
+        return queryset

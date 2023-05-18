@@ -1,9 +1,8 @@
 from django.db import models
+
 from apps.classe.models import Classe
+from apps.fornecedor.models import Destinacao, Fornecedor
 from apps.localidade.models import Localidade
-from apps.fornecedor.models import Fornecedor
-from apps.fornecedor.models import Destinacao
-from django.contrib import admin
 
 
 # Create your models here.
@@ -31,8 +30,9 @@ class Saida(models.Model):
     custo = models.DecimalField(
         max_digits=10, decimal_places=2, default=0, null=False, blank=True
     )
-    mtr = models.CharField(max_length=50)
-    cdf = models.CharField(max_length=50)
+    n_evidencia = models.CharField(max_length=50)
+    cdf = models.CharField(max_length=50,
+                           blank=True)
 
     def __str__(self):
         return f"ID:{self.id_saida}"

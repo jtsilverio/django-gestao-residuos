@@ -13,7 +13,7 @@ class SaidaAdmin(admin.ModelAdmin):
         "peso",
         "receita",
         "custo",
-        "mtr",
+        "n_evidencia",
         "cdf",
     ]
     list_filter = [

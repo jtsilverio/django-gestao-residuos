@@ -6,7 +6,7 @@ class Destinacao(models.Model):
     nome = models.CharField(max_length=50, null=False, blank=False)
 
     def __str__(self):
-        return f"{self.id_destinacao}: {self.nome}"
+        return self.nome
 
     class Meta:
         db_table = "destinacao"
@@ -26,7 +26,7 @@ class Fornecedor(models.Model):
     )
 
     def __str__(self):
-        return f"{self.id_fornecedor}: {self.nome}"
+        return self.nome
 
     class Meta:
         db_table = "fornecedor"
