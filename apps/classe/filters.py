@@ -4,7 +4,7 @@ from django.forms import (
 )
 
 
-class LocalidadeFilter(django_filters.FilterSet):
+class ClasseFilter(django_filters.FilterSet):
     # create a filter for a text field
     nome = django_filters.CharFilter(
         label="Nome",
@@ -12,7 +12,7 @@ class LocalidadeFilter(django_filters.FilterSet):
         widget=TextInput(
             attrs={
                 "class": "form-control",
-                "placeholder": "Nome da Localidade",
+                "placeholder": "Nome da Classe",
             }
         ),
     )
