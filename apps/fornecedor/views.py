@@ -1,11 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 
 
 def fornecedor(request):
     return render(request, "fornecedor/fornecedor.html")
 
-def destinacao(request):
-    return render(request, "fornecedor/destinacao.html")
 
-def cadastro(request):
-        return render(request, "fornecedor/fornecedor_cadastro.html")
+def fornecedor_cadastro(request):
+    return render(request, "fornecedor/fornecedor_cadastro.html")

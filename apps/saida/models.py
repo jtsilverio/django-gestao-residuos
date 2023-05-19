@@ -32,7 +32,8 @@ class Saida(models.Model):
     )
     n_evidencia = models.CharField(max_length=50)
     cdf = models.CharField(max_length=50,
-                           blank=True)
+                           blank=True,
+                           default="",)
 
     def __str__(self):
         return f"ID:{self.id_saida}"

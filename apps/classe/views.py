@@ -28,19 +28,19 @@ def classe_index(request):
     return render(request, "classe/classe.html", context)
 
 
-class ClasseEdit(SuccessMessageMixin, UpdateView):
-    model = Classe
-    form_class = ClasseForm
-    template_name = "classe/classe_edit.html"
-    success_message = "Classe atualizada"
-    success_url = reverse_lazy("classe")
-
-
 class ClasseCreate(SuccessMessageMixin, CreateView):
     model = Classe
     form_class = ClasseForm
     template_name = "classe/classe_cadastro.html"
     success_message = "Classe cadastrada"
+    success_url = reverse_lazy("classe")
+
+
+class ClasseEdit(SuccessMessageMixin, UpdateView):
+    model = Classe
+    form_class = ClasseForm
+    template_name = "classe/classe_edit.html"
+    success_message = "Classe atualizada"
     success_url = reverse_lazy("classe")
 
 

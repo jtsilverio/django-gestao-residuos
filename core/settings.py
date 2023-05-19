@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
     "apps.localidade.apps.LocalidadeConfig",
     "apps.classe.apps.ClasseConfig",
+    "apps.destinacao.apps.DestinacaoConfig",
     "apps.entrada.apps.EntradaConfig",
     "apps.saida.apps.SaidaConfig",
     "apps.fornecedor.apps.FornecedorConfig",

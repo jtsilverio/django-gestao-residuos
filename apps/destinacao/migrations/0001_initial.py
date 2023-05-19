@@ -10,15 +10,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Localidade",
+            name="Destinacao",
             fields=[
-                ("id_localidade", models.AutoField(primary_key=True, serialize=False)),
+                ("id_destinacao", models.AutoField(primary_key=True, serialize=False)),
                 ("nome", models.CharField(max_length=50)),
             ],
             options={
-                "verbose_name": "Localidade",
-                "verbose_name_plural": "Localidades",
-                "db_table": "localidade",
+                "verbose_name": "Destinação",
+                "verbose_name_plural": "Destinações",
+                "db_table": "destinacao",
+                "ordering": ["nome"],
             },
         ),
     ]

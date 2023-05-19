@@ -3,6 +3,5 @@ from apps.fornecedor import views
 
 urlpatterns = [
     path("", views.fornecedor, name="fornecedor"),
-    path("destinacao", views.destinacao, name="destinacao"),
-    path("fornecedor_cadastro.html", views.cadastro, name="fornecedor_cadastro")
+    path("fornecedor_cadastro.html", views.fornecedor_cadastro, name="fornecedor_cadastro"),
 ]
