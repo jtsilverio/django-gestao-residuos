@@ -1,5 +1,7 @@
 from django.db import models
+
 from apps.destinacao.models import Destinacao
+
 
 class Fornecedor(models.Model):
     id_fornecedor = models.AutoField(primary_key=True)

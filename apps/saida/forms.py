@@ -1,4 +1,5 @@
 from django import forms
+
 from apps.saida.models import Saida
 
 
@@ -67,5 +68,4 @@ class SaidaForm(forms.ModelForm):
             "cdf": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "CDF"},
             ),
-
         }

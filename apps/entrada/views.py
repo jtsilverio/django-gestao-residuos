@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import UpdateView
-from django.core.paginator import Paginator
 
 from apps.entrada.filters import EntradaFilter
 from apps.entrada.forms import EntradaForm
@@ -12,14 +12,14 @@ from apps.entrada.models import Entrada
 
 PAGESIZE = 15
 
+
 def entrada_index(request):
     page_number = request.GET.get("page")
-    entradas_filter = EntradaFilter(request.GET,
-                             queryset=Entrada.objects.all())
-    
+    entradas_filter = EntradaFilter(request.GET, queryset=Entrada.objects.all())
+
     entradas_paginated = Paginator(entradas_filter.qs, PAGESIZE)
     entradas = entradas_paginated.get_page(page_number)
-    
+
     context = {
         "object_list": entradas,
         "filter_form": entradas_filter.form,

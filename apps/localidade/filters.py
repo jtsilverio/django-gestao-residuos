@@ -1,7 +1,5 @@
 import django_filters
-from django.forms import (
-    TextInput,
-)
+from django.forms import TextInput
 
 
 class LocalidadeFilter(django_filters.FilterSet):

@@ -8,9 +8,7 @@ from apps.localidade.models import Localidade
 # Create your models here.
 class Saida(models.Model):
     id_saida = models.AutoField(primary_key=True)
-    id_classe = models.ForeignKey(
-        Classe, models.DO_NOTHING, db_column="id_classe"
-    )
+    id_classe = models.ForeignKey(Classe, models.DO_NOTHING, db_column="id_classe")
     id_localidade = models.ForeignKey(
         Localidade, models.DO_NOTHING, db_column="id_localidade"
     )
@@ -31,9 +29,11 @@ class Saida(models.Model):
         max_digits=10, decimal_places=2, default=0, null=False, blank=True
     )
     n_evidencia = models.CharField(max_length=50)
-    cdf = models.CharField(max_length=50,
-                           blank=True,
-                           default="",)
+    cdf = models.CharField(
+        max_length=50,
+        blank=True,
+        default="",
+    )
 
     def __str__(self):
         return f"ID:{self.id_saida}"

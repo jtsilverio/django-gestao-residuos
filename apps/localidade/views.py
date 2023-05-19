@@ -11,11 +11,10 @@ from apps.localidade.models import Localidade
 
 PAGESIZE = 15
 
+
 def localidade_index(request):
     page_number = request.GET.get("page")
-    model_filter = LocalidadeFilter(
-        request.GET, queryset=Localidade.objects.all()
-    )
+    model_filter = LocalidadeFilter(request.GET, queryset=Localidade.objects.all())
 
     query_paginated = Paginator(model_filter.qs, PAGESIZE)
     query_filtered = query_paginated.get_page(page_number)

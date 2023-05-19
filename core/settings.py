@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 from os import path
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,9 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-d%quh*-(38)+6*ct9!3ll-uycjo)_k%)lw08klr3l@%x3v7_5b"
-)
+SECRET_KEY = "django-insecure-d%quh*-(38)+6*ct9!3ll-uycjo)_k%)lw08klr3l@%x3v7_5b"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django_filters',
+    "django_filters",
     "apps.localidade.apps.LocalidadeConfig",
     "apps.classe.apps.ClasseConfig",
     "apps.destinacao.apps.DestinacaoConfig",
@@ -76,7 +74,7 @@ TEMPLATES = [
             "libraries": {
                 "is_checkbox": "templatetags.is_checkbox",
                 "page_parser": "templatetags.page_parser",
-            }
+            },
         },
     },
 ]
@@ -103,19 +101,13 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": (
-            "django.contrib.auth.password_validation.MinimumLengthValidator"
-        ),
+        "NAME": ("django.contrib.auth.password_validation.MinimumLengthValidator"),
     },
     {
-        "NAME": (
-            "django.contrib.auth.password_validation.CommonPasswordValidator"
-        ),
+        "NAME": ("django.contrib.auth.password_validation.CommonPasswordValidator"),
     },
     {
-        "NAME": (
-            "django.contrib.auth.password_validation.NumericPasswordValidator"
-        ),
+        "NAME": ("django.contrib.auth.password_validation.NumericPasswordValidator"),
     },
 ]
 
@@ -131,7 +123,7 @@ USE_I18N = False
 
 USE_TZ = True
 
-DATE_INPUT_FORMATS = ("%d/%m/%Y", '%Y-%m-%d')
+DATE_INPUT_FORMATS = ("%d/%m/%Y", "%Y-%m-%d")
 
 
 # Static files (CSS, JavaScript, Images)
@@ -150,9 +142,9 @@ from django.contrib.messages import constants as messages
 
 # MESSAGES CSS TAGS
 MESSAGE_TAGS = {
-    messages.DEBUG: 'bg-info text-white',
-    messages.INFO: 'bg-info text-white',
-    messages.SUCCESS: 'bg-success text-white',
-    messages.WARNING: 'bg-warning text-white',
-    messages.ERROR: 'bg-danger text-white',
+    messages.DEBUG: "bg-info text-white",
+    messages.INFO: "bg-info text-white",
+    messages.SUCCESS: "bg-success text-white",
+    messages.WARNING: "bg-warning text-white",
+    messages.ERROR: "bg-danger text-white",
 }

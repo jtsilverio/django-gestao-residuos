@@ -1,4 +1,5 @@
-from django.forms import TextInput, ModelForm
+from django.forms import ModelForm, TextInput
+
 from apps.classe.models import Classe
 
 

@@ -1,11 +1,6 @@
 import django_filters
-from django.forms import (
-    CheckboxInput,
-    CheckboxSelectMultiple,
-    DateInput,
-    Select,
-    BooleanField,
-)
+from django.forms import (BooleanField, CheckboxInput, CheckboxSelectMultiple,
+                          DateInput, Select)
 
 from apps.classe.models import Classe
 from apps.fornecedor.models import Destinacao, Fornecedor

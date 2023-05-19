@@ -5,18 +5,16 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from apps.destinacao.models import Destinacao
-from apps.destinacao.forms import DestinacaoForm
 from apps.destinacao.filters import DestinacaoFilter
+from apps.destinacao.forms import DestinacaoForm
+from apps.destinacao.models import Destinacao
 
 PAGESIZE = 15
 
 
 def destinacao_index(request):
     page_number = request.GET.get("page")
-    model_filter = DestinacaoFilter(
-        request.GET, queryset=Destinacao.objects.all()
-    )
+    model_filter = DestinacaoFilter(request.GET, queryset=Destinacao.objects.all())
 
     query_paginated = Paginator(model_filter.qs, PAGESIZE)
     query_filtered = query_paginated.get_page(page_number)

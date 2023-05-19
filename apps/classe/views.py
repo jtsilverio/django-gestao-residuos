@@ -14,9 +14,7 @@ PAGESIZE = 15
 
 def classe_index(request):
     page_number = request.GET.get("page")
-    model_filter = ClasseFilter(
-        request.GET, queryset=Classe.objects.all()
-    )
+    model_filter = ClasseFilter(request.GET, queryset=Classe.objects.all())
 
     query_paginated = Paginator(model_filter.qs, PAGESIZE)
     query_filtered = query_paginated.get_page(page_number)
