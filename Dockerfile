@@ -8,6 +8,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /code
 
 WORKDIR /code
+COPY db.sqlite3 /code/db.sqlite3
 
 COPY requirements.txt /tmp/requirements.txt
 RUN set -ex && \
@@ -16,6 +17,8 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /code
 
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
