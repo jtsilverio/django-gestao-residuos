@@ -12,22 +12,33 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from os import path
 from pathlib import Path
+import environ
+from django.core.management.utils import get_random_secret_key
+
+env = environ.Env(  
+    # set casting, default value
+    DEBUG=(bool, False),
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Take environment variables from .env file
+environ.Env.read_env(BASE_DIR / '.env')  # <-- Updated!
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-d%quh*-(38)+6*ct9!3ll-uycjo)_k%)lw08klr3l@%x3v7_5b"
+SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())  # <-- Updated!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://django-gestao-residuos.fly.dev']
 
 # Application definition
 
@@ -86,11 +97,16 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    # read os.environ['DATABASE_URL']
+    'default': env.db()  # <-- Updated!
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
 
 # Password validation
