@@ -4,6 +4,10 @@
 #
 #    pip-compile --no-emit-index-url requirements-dev.in
 #
+asgiref==3.6.0
+    # via
+    #   -r requirements.txt
+    #   django
 black==23.3.0
     # via -r requirements-dev.in
 build==0.10.0
@@ -23,6 +27,14 @@ cssbeautifier==1.14.7
     # via djlint
 distlib==0.3.6
     # via virtualenv
+django==4.2
+    # via
+    #   -r requirements.txt
+    #   django-filter
+django-environ==0.10.0
+    # via -r requirements.txt
+django-filter==23.2
+    # via -r requirements.txt
 djlint==1.23.1
     # via -r requirements-dev.in
 docformatter==1.6.0
@@ -33,6 +45,8 @@ editorconfig==0.12.3
     #   jsbeautifier
 filelock==3.11.0
     # via virtualenv
+gunicorn==20.1.0
+    # via -r requirements.txt
 html-tag-names==0.1.2
     # via djlint
 html-void-elements==0.1.0
@@ -83,6 +97,10 @@ six==1.16.0
     # via
     #   cssbeautifier
     #   jsbeautifier
+sqlparse==0.4.3
+    # via
+    #   -r requirements.txt
+    #   django
 tomli==2.0.1
     # via
     #   black

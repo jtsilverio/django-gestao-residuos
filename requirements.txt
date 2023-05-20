@@ -10,7 +10,14 @@ django==4.2
     # via
     #   -r requirements.in
     #   django-filter
+django-environ==0.10.0
+    # via -r requirements.in
 django-filter==23.2
+    # via -r requirements.in
+gunicorn==20.1.0
     # via -r requirements.in
 sqlparse==0.4.3
     # via django
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
