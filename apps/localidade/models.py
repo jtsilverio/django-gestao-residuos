@@ -13,3 +13,4 @@ class Localidade(models.Model):
         db_table = "localidade"
         verbose_name = "Localidade"
         verbose_name_plural = "Localidades"
+        ordering = ["-id_localidade"]

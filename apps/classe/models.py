@@ -12,3 +12,4 @@ class Classe(models.Model):
         db_table = "classe"
         verbose_name = "Classe"
         verbose_name_plural = "Classes"
+        ordering = ["-id_classe"]

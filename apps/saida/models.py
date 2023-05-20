@@ -42,3 +42,4 @@ class Saida(models.Model):
         db_table = "saida"
         verbose_name = "Saída"
         verbose_name_plural = "Saídas"
+        ordering = ["-id_saida"]
