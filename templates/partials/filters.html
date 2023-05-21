@@ -1,32 +1,51 @@
 {% load static %}
 {% load is_checkbox %}
+<div class="accordion card mb-3" id="FiltersAccordion">
+    <div class="accordion-item bg-white rounded border-0">
+        <h2 class="accordion-header rounded">
+            <button class="accordion-button bg-white border-0 rounded shadow-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#FiltersCollapse"
+                    aria-expanded="false"
+                    aria-controls="FiltersCollapse">
+                <h6 class="m-0 p-0">Filtros</h6>
+            </button>
+        </h2>
 
-<section class="card border-0 shadow mb-4">
-    <div class="card-body">
-        <form id="entrada-filter" method="get">
-            <div class="row g-2">
-                {% for field in filter_form %}
-                    <div class="col me-3">
-                        {% if field|is_multiple_choice %}
-                            {{ field.label_tag }}
-                            {% for choice in field %}
-                                <div class="form-check">
-                                    {{ choice.tag }}
-                                    <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            {{ field.label_tag }}
-                            {{ field }}
-                        {% endif %}
+        <div id="FiltersCollapse"
+             class="accordion-collapse collapse"
+             data-bs-parent="#FiltersAccordion">
+            <div class="accordion-body border-0">
+                <form id="entrada-filter" method="get">
+                    <div class="row g-2">
+                        {% for field in filter_form %}
+                            <div class="col me-3">
+                                {% if field|is_multiple_choice %}
+                                    {{ field.label_tag }}
+                                    {% for choice in field %}
+                                        <div class="form-check">
+                                            {{ choice.tag }}
+                                            <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                    <div class="row g-2 mt-2">
+                        <div class="col justify-content-start d-flex">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-funnel pe-2"></i>Filtrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row g-2 mt-2">
-                <div class="col justify-content-start d-flex">
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-</section>
+</div>
+<div class="card-body"></div>
