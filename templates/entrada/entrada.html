@@ -1,39 +1,21 @@
-{% extends "base.html" %}
-
+{% extends "base_card.html" %}
 {% block title %}
-Entrada
+    Entrada
 {% endblock title %}
-
 {% block content %}
-
-{% include 'partials/filters.html' %}
-
-<section class="card border-0 shadow">
-    <div class="card-header pb-1 bg-white">
-        <div class="d-flex justify-content-start">
-            <a href="{% url 'entrada_cadastro' %}">
-                <button type="button" class="btn btn-secondary mb-3">
-                    <i class="bi bi-plus-lg pe-2"></i>Cadastro
-                </button>
-            </a>
-        </div>
-    </div>
-    
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-centered mb-0 rounded table-sm">
-                <thead class="thead-light">
-                    <tr>
-                        <th class="align-middle border-0 rounded-start">Data</th>
-                        <th class="align-middle border-0">Localidade</th>
-                        <th class="align-middle border-0">Classe</th>
-                        <th class="align-middle border-0">Peso (kg)</th>
-                        <th class="align-middle border-0 rounded-end"></th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for entrada in object_list %}
+    <div class="table-responsive m-4">
+        <table class="table table-centered mb-0 rounded table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="align-middle border-0 rounded-start">Data</th>
+                    <th class="align-middle border-0">Localidade</th>
+                    <th class="align-middle border-0">Classe</th>
+                    <th class="align-middle border-0">Peso (kg)</th>
+                    <th class="align-middle border-0 rounded-end"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entrada in object_list %}
                     <tr class="align-middle">
                         <td>{{ entrada.dt_entrada }}</td>
                         <td>{{ entrada.id_localidade }}</td>
@@ -42,33 +24,28 @@ Entrada
                         <td>
                             <div class="d-flex justify-content-start">
                                 <a href="{% url 'entrada_edit' pk=entrada.id_entrada %}">
-                                    <button class="btn btn-sm shadow-none border-0"><i
-                                            class="bi bi-pencil-square text-secondary"></i></button>
+                                    <button class="btn btn-sm shadow-none border-0">
+                                        <i class="bi bi-pencil-square text-secondary"></i>
+                                    </button>
                                 </a>
-
                                 <form onsubmit="return confirm('Confirmar deleção?');"
-                                    action="{% url 'entrada_delete' pk=entrada.id_entrada %}" method="POST"
-                                    value="delete">
+                                      action="{% url 'entrada_delete' pk=entrada.id_entrada %}"
+                                      method="POST"
+                                      value="delete">
                                     {% csrf_token %}
-                                    <button class="btn btn-sm shadow-none border-0"><i
-                                            class="bi bi-x-circle text-danger"></i></button>
+                                    <button class="btn btn-sm shadow-none border-0">
+                                        <i class="bi bi-x-circle text-danger"></i>
+                                    </button>
                                 </form>
                             </div>
                         </td>
                     </tr>
-                    {% empty %}
+                {% empty %}
                     <tr>
                         <td colspan="5">Nenhuma entrada cadastrada</td>
                     </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="card-footer pt-0">
-            {% include 'partials/paginate.html' %}
-        </div>
-
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-</section>
 {% endblock content %}
