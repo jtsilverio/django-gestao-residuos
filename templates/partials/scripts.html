@@ -1,22 +1,9 @@
 {% load static %}
 <!-- Bootstrap Core -->
-<script src="{% static 'bootstrap-5.3.0-alpha3/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 <!-- Volt JS -->
 <script src="{% static 'js/volt.js' %}"></script>
 
 <!-- Django Message JS -->
-<script>
-    document.addEventListener("DOMContentLoaded", function(){
-        var element = document.getElementById("django-message");
-        var elementBtn = document.getElementById("django-message-btn");
-
-        // Create toast instance
-        var djangoMessage = new bootstrap.Toast(element);
-        elementBtn.addEventListener("click", function(){
-            djangoMessage.hide();
-        });
-        
-        djangoMessage.show();
-    });
-</script>
+<script src="{% static 'js/django_messsage.js' %}"></script>
