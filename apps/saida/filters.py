@@ -11,7 +11,7 @@ from apps.saida.models import Saida
 class SaidaFilter(django_filters.FilterSet):
     dt_saida = django_filters.DateFilter(
         label="Data de Saida",
-        widget=DateInput(attrs={"type": "date", "class": "form-control"}),
+        widget=DateInput(attrs={"type": "date", "class": "form-control", "style":"max-width: 200px;"}),
     )
     id_fornecedor = django_filters.ModelChoiceFilter(
         label="Fornecedor",

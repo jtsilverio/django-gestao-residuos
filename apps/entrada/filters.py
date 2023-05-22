@@ -11,7 +11,7 @@ from apps.localidade.models import Localidade
 class EntradaFilter(django_filters.FilterSet):
     dt_entrada = django_filters.DateFilter(
         label="Data de Entrada",
-        widget=DateInput(attrs={"type": "date", "class": "form-control"}),
+        widget=DateInput(attrs={"type": "date", "class": "form-control", "style":"max-width: 200px;"}),
     )
     id_classe = django_filters.ModelMultipleChoiceFilter(
         label="Classe",
