@@ -35,7 +35,7 @@ environ.Env.read_env(BASE_DIR / '.env')  # <-- Updated!
 SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())  # <-- Updated!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+DEBUG = env("DEBUG", default=False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
 CSRF_TRUSTED_ORIGINS = ['https://django-gestao-residuos.fly.dev']
