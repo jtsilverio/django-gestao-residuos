@@ -2,8 +2,8 @@
 {% load is_checkbox %}
 <div class="accordion card mb-3 border-0 shadow" id="FiltersAccordion">
     <div class="accordion-item bg-white rounded border-0">
-        <h2 class="accordion-header rounded">
-            <button class="accordion-button bg-white border-0 rounded shadow-none"
+        <h2 class="accordion-header rounded-top">
+            <button class="accordion-button bg-white rounded shadow-none"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#FiltersCollapse"
@@ -17,8 +17,8 @@
         <div id="FiltersCollapse"
              class="accordion-collapse collapse {% if number_of_active_filters > 0 %} show {% endif %}""
              data-bs-parent="#FiltersAccordion">
-            <div class="accordion-body border-0">
-                <form id="entrada-filter" method="get">
+            <div class="accordion-body">
+                <form id="filters-form" method="get">
                     <div class="row g-2">
                         {% for field in filter_form %}
                             <div class="col me-3">
@@ -42,10 +42,11 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-funnel pe-2"></i>Filtrar
                             </button>
-                            <a href="#">
+                            <a href="{{ request.path }}">
                             <button class="btn btn-outline-secondary ms-2" type="button">
                                 <i class="bi bi-eraser pe-2"></i>Limpar Filtros
                             </button>
+                            
                         </div>
                     </div>
                 </form>
