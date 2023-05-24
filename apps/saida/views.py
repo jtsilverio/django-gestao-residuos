@@ -24,7 +24,7 @@ def saida_index(request):
     context = {
         "object_list": saida,
         "filter_form": saida_filter.form,
-        "number_of_active_filters": count_active_filters(request),
+        "number_of_active_filters": count_active_filters(request, saida_filter),
     }
     return render(request, "saida/saida.html", context)
 

@@ -23,7 +23,7 @@ def classe_index(request):
     context = {
         "object_list": query_filtered,
         "filter_form": model_filter.form,
-        "number_of_active_filters": count_active_filters(request),
+        "number_of_active_filters": count_active_filters(request, model_filter),
     }
     return render(request, "classe/classe.html", context)
 
