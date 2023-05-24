@@ -8,6 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from apps.localidade.filters import LocalidadeFilter
 from apps.localidade.forms import LocalidadeForm
 from apps.localidade.models import Localidade
+from apps.utils import count_active_filters
 
 PAGESIZE = 15
 
@@ -22,6 +23,7 @@ def localidade_index(request):
     context = {
         "object_list": query_filtered,
         "filter_form": model_filter.form,
+        "number_of_active_filters": count_active_filters(request),
     }
     return render(request, "localidade/localidade.html", context)
 

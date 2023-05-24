@@ -8,6 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from apps.classe.filters import ClasseFilter
 from apps.classe.forms import ClasseForm
 from apps.classe.models import Classe
+from apps.utils import count_active_filters
 
 PAGESIZE = 15
 
@@ -22,6 +23,7 @@ def classe_index(request):
     context = {
         "object_list": query_filtered,
         "filter_form": model_filter.form,
+        "number_of_active_filters": count_active_filters(request),
     }
     return render(request, "classe/classe.html", context)
 

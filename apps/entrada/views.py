@@ -9,6 +9,7 @@ from django.views.generic import UpdateView
 from apps.entrada.filters import EntradaFilter
 from apps.entrada.forms import EntradaForm
 from apps.entrada.models import Entrada
+from apps.utils import count_active_filters
 
 PAGESIZE = 15
 
@@ -16,13 +17,14 @@ PAGESIZE = 15
 def entrada_index(request):
     page_number = request.GET.get("page")
     entradas_filter = EntradaFilter(request.GET, queryset=Entrada.objects.all())
-
+    
     entradas_paginated = Paginator(entradas_filter.qs, PAGESIZE)
     entradas = entradas_paginated.get_page(page_number)
 
     context = {
         "object_list": entradas,
         "filter_form": entradas_filter.form,
+        "number_of_active_filters": count_active_filters(request, entradas_filter),
     }
     return render(request, "entrada/entrada.html", context)
 

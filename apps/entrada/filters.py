@@ -4,9 +4,7 @@ from django.forms import (BooleanField, CheckboxInput, CheckboxSelectMultiple,
                           ModelMultipleChoiceField, Select, SelectMultiple)
 
 from apps.classe.models import Classe
-from apps.entrada.models import Entrada
 from apps.localidade.models import Localidade
-
 
 class EntradaFilter(django_filters.FilterSet):
     dt_entrada = django_filters.DateFilter(

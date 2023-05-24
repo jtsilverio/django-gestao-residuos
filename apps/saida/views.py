@@ -9,6 +9,7 @@ from django.views.generic import UpdateView
 from apps.saida.filters import SaidaFilter
 from apps.saida.forms import SaidaForm
 from apps.saida.models import Saida
+from apps.utils import count_active_filters
 
 PAGESIZE = 15
 
@@ -23,6 +24,7 @@ def saida_index(request):
     context = {
         "object_list": saida,
         "filter_form": saida_filter.form,
+        "number_of_active_filters": count_active_filters(request),
     }
     return render(request, "saida/saida.html", context)
 

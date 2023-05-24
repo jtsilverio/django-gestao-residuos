@@ -1,9 +1,7 @@
-from django import forms
-
+from django.forms import ModelChoiceField, ModelForm, Select, DateInput, NumberInput
 from apps.entrada.models import Entrada
 
-
-class EntradaForm(forms.ModelForm):
+class EntradaForm(ModelForm):
     class Meta:
         model = Entrada
 
@@ -22,20 +20,20 @@ class EntradaForm(forms.ModelForm):
         }
 
         widgets = {
-            "dt_entrada": forms.DateInput(
+            "dt_entrada": DateInput(
                 format=("%Y-%m-%d"),
                 attrs={
                     "class": "form-control",
                     "type": "date",
                 },
             ),
-            "id_localidade": forms.Select(
+            "id_localidade": Select(
                 attrs={"class": "form-select", "placeholder": "Localidade"}
             ),
-            "id_classe": forms.Select(
+            "id_classe": Select(
                 attrs={"class": "form-select", "placeholder": "Classe"}
             ),
-            "peso": forms.NumberInput(
+            "peso": NumberInput(
                 attrs={"class": "form-control", "placeholder": "Localidade"},
             ),
         }

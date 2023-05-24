@@ -8,6 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from apps.destinacao.filters import DestinacaoFilter
 from apps.destinacao.forms import DestinacaoForm
 from apps.destinacao.models import Destinacao
+from apps.utils import count_active_filters
 
 PAGESIZE = 15
 
@@ -22,6 +23,7 @@ def destinacao_index(request):
     context = {
         "object_list": query_filtered,
         "filter_form": model_filter.form,
+        "number_of_active_filters": count_active_filters(request),
     }
     return render(request, "destinacao/destinacao.html", context)
 
