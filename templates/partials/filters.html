@@ -15,7 +15,7 @@
             </button>
         </h2>
         <div id="FiltersCollapse"
-             class="accordion-collapse collapse {% if number_of_active_filters > 0 %} show {% endif %}""
+             class="accordion-collapse collapse {% if number_of_active_filters > 0 %} show {% endif %}"
              data-bs-parent="#FiltersAccordion">
             <div class="accordion-body">
                 <form id="filters-form" method="get">
@@ -24,12 +24,16 @@
                             <div class="col me-3">
                                 {% if field|is_multiple_choice %}
                                     {{ field.label_tag }}
-                                    {% for choice in field %}
-                                        <div class="form-check">
-                                            {{ choice.tag }}
-                                            <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
-                                        </div>
-                                    {% endfor %}
+                                    {% if field|length <= 0 %}
+                                        <label class="form-check-label text-small text-gray-300">Sem Registros</label>
+                                    {% else %}
+                                        {% for choice in field %}
+                                            <div class="form-check">
+                                                {{ choice.tag }}
+                                                <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 {% else %}
                                     {{ field.label_tag }}
                                     {{ field }}
