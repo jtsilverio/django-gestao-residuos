@@ -8,11 +8,11 @@ class EntradaAdmin(admin.ModelAdmin):
         "__str__",
         "id_classe",
         "id_localidade",
-        "dt_entrada",
+        "data",
         "peso",
     ]
-    list_filter = ["id_classe", "id_localidade", "dt_entrada"]
-    search_fields = ["id_classe__nome", "id_localidade__nome", "dt_entrada"]
+    list_filter = ["id_classe", "id_localidade", "data"]
+    search_fields = ["id_classe__nome", "id_localidade__nome", "data"]
     list_per_page = 15
 
 

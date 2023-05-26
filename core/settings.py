@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "apps.entrada.apps.EntradaConfig",
     "apps.saida.apps.SaidaConfig",
     "apps.fornecedor.apps.FornecedorConfig",
+    "apps.home.apps.HomeConfig",
 ]
 
 MIDDLEWARE = [

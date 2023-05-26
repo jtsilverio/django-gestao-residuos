@@ -9,9 +9,8 @@ endif
 
 .PHONY: clean_migrations
 clean_migrations:
-	find . -path "*/migrations/*.py" -not -name "__init__.py" -not -path "./venv/*" -delete
-	find . -path "*/migrations/*.pyc" -not -path "./venv/*" -delete
-
+	find . -path "*/migrations/*.py" -not -name "__init__.py" -not -path "./venv/*" -not -path "*/home/migrations/*.py" -delete
+	find . -path "*/migrations/*.pyc" -not -path "./venv/*" -not -path "*/home/migrations/*.pyc" -delete
 
 install-pip-tools:
 	$(PYTHON_INTERPRETER) -m pip install pip-tools
@@ -36,3 +35,7 @@ scss:
 
 black:
 	black . --line-length 79 --exclude venv
+
+# generate a new django secret key and copy it to .env file in the form SECRET_KEY=...
+django-secret-key:
+	$(PYTHON_INTERPRETER) -c 'from django.core.management.utils import get_random_secret_key; print("SECRET_KEY=" + get_random_secret_key())' >> .env
