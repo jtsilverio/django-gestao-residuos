@@ -1,32 +1,75 @@
 {% extends "base.html" %}
 {% block title %}
-    <div class="pl-5 ml-5">
-        Home
-    </div>
+    <div class="pl-5 ml-5">Home</div>
 {% endblock title %}
 {% block content %}
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Gráfico</h6>
+        </div>
+        <div class="card-body">
+            <div class="chart">{{ plot|safe }}</div>
+        </div>
+    </div>
+
     <div class="row">
-        {% for model_name, stats in object_list.items %}
+        {% for model_name, stats in stats_dict.items %}
             <div class="col-12 col-sm-6 col-xl-4 mb-4">
                 <div class="card border-0 shadow">
                     <div class="card-body">
-                        <div class="row d-block d-xxl-flex align-items-center">
-                            <div class="col-12">
-                                <h2 class="fs-5 fw-normal mb-1">{{ model_name|capfirst }}</h2>
-                                <h3 class="fw-extrabold mb-1">{{ stats.current_month }} kg</h3>
-                                <small class="d-flex align-items-center">
-                                    <svg class="icon icon-xxs text-gray-400 me-1"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
+                        <div class="row d-block d-xl-flex align-items-center">
+                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-secondary bg-gradient me-4 me-sm-0">
+                                    {% if model_name == "entrada" %}
+                                        <svg class="icon" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd">
-                                        </path>
-                                    </svg>
-                                {{ stats.range.0 }} - {{ stats.range.1 }} </small>
+                                            <path clip-rule="evenodd"
+                                                d="M5.478 5.559A1.5 1.5 0 016.912 4.5H9A.75.75 0 009 3H6.912a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H15a.75.75 0 000 1.5h2.088a1.5 1.5 0 011.434 1.059l2.213 7.191H17.89a3 3 0 00-2.684 1.658l-.256.513a1.5 1.5 0 01-1.342.829h-3.218a1.5 1.5 0 01-1.342-.83l-.256-.512a3 3 0 00-2.684-1.658H3.265l2.213-7.191z"
+                                                fill-rule="evenodd"></path>
+                                            <path clip-rule="evenodd"
+                                                d="M12 2.25a.75.75 0 01.75.75v6.44l1.72-1.72a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 011.06-1.06l1.72 1.72V3a.75.75 0 01.75-.75z"
+                                                fill-rule="evenodd"></path>
+                                        </svg>
+                                    {% elif model_name == "saida" %}
+                                        <span class="sidebar-icon">
+                                            <svg class="icon" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.5 3c-1.051 0-2.093.04-3.125.117A1.49 1.49 0 002 4.607V10.5h9V4.606c0-.771-.59-1.43-1.375-1.489A41.568 41.568 0 006.5 3zM2 12v2.5A1.5 1.5 0 003.5 16h.041a3 3 0 015.918 0h.791a.75.75 0 00.75-.75V12H2z">
+                                                </path>
+                                                <path
+                                                    d="M6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM13.25 5a.75.75 0 00-.75.75v8.514a3.001 3.001 0 014.893 1.44c.37-.275.61-.719.595-1.227a24.905 24.905 0 00-1.784-8.549A1.486 1.486 0 0014.823 5H13.25zM14.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    {% elif model_name == "saldo" %}
+                                        <i class="bi bi-receipt h4 mb-0"></i>
+                                    {% else %}
+                                        <i class="bi bi-bar-chart-fill"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="d-sm-none">
+                                    <h2 class="fs-5 fw-normal mb-1">{{ model_name|capfirst }}</h2>
+                                    <h3 class="fw-extrabold mb-1">{{ stats.current_month_peso }} kg</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-xl-7 px-xl-0">
+                                <div class="d-none d-sm-block">
+                                    <h2 class="fs-5 fw-normal mb-1">{{ model_name|capfirst }}</h2>
+                                    <h3 class="fw-extrabold mb-1">{{ stats.current_month_peso }} kg</h3>
+                                </div>
                                 <div class="small d-flex mt-1">
-                                    <div>
-                                        <span class="{% if stats.trend == 'up' %} text-success {% elif stats.trend == 'down' %} text-danger {% endif %} fw-bolder me-1">{{ stats.diff_perc }}%</span> Since last month
+                                    <small class="d-flex align-items-center">
+                                        <i class="bi bi-calendar2-fill text-gray-400 me-1 small"></i> mar 13 - apr 12
+                                    </small>
+                                </div>
+                                <div class="small d-flex mt-1">
+                                    <div class="small {% if stats.trend == 'down' %} text-success {% elif stats.trend == 'up' %} text-danger {% endif %}">
+                                        <i class="bi {% if stats.trend == 'down' %} bi-caret-down-fill {% elif stats.trend == 'up' %} bi-caret-up-fill {% endif %}"></i>
+                                        <span class="fw-bolder me-1">{{ stats.diff_perc }}%</span>
                                     </div>
+                                    <span class="small"> desde mês passado</span>
                                 </div>
                             </div>
                         </div>
@@ -34,6 +77,287 @@
                 </div>
             </div>
         {% endfor %}
-
     </div>
+
+    <div class="card border-0 shadow">
+        <div class="card-header">
+            <h2 class="fs-5 fw-bold mb-1">Visits past 30 days by country</h2>
+        </div>
+
+        <div class="card-body py-4">
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                    <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/united-states-of-america.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">United States <span class="text-gray-500 font-small">(272.109)</span></div>
+                            <div class="small fw-bold"><span>34 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100" style="width: 34%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/canada.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">Canada <span class="text-gray-500 font-small">(160.064)</span></div>
+                            <div class="small fw-bold"><span>20 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 24%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/germany.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">Germany <span class="text-gray-500 font-small">(120.048)</span></div>
+                            <div class="small fw-bold"><span>15 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar bg-tertiary" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/france.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">France <span class="text-gray-500 font-small">(100.048)</span></div>
+                            <div class="small fw-bold"><span>8 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" style="width: 8%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/japan.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">Japan <span class="text-gray-500 font-small">(56.022)</span></div>
+                            <div class="small fw-bold"><span>7 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" style="width: 7%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/italy.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">Italy <span class="text-gray-500 font-small">(48.019)</span></div>
+                            <div class="small fw-bold"><span>6 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width: 6%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/netherlands.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">Netherlands <span class="text-gray-500 font-small">(40.016)</span></div>
+                            <div class="small fw-bold"><span>5 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <a href="#" class="image image-xs rounded-circle">
+                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/sweden.svg">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <div class="h6 mb-0">Sweden <span class="text-gray-500 font-small">(26.016)</span></div>
+                            <div class="small fw-bold"><span>3 %</span></div>
+                        </div>
+                        <div class="progress mb-0">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100" style="width: 3%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-gray-50 border-top text-center">
+            <a class="fw-bold d-flex align-items-center justify-content-center" href="../calendar.html">
+                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
+                See all
+            </a>
+        </div>
+    </div>
+
+    <div class="col-12 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="fs-5 fw-bold mb-0">Page visits</h2>
+                    </div>
+                    <div class="col text-end">
+                        <a href="./traffic-sources.html" class="btn btn-sm btn-primary">See all</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="border-bottom" scope="col">Page name</th>
+                        <th class="border-bottom" scope="col">Page Views</th>
+                        <th class="border-bottom" scope="col">Page Value</th>
+                        <th class="border-bottom" scope="col">Bounce rate</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th class="text-gray-900" scope="row">
+                            /demo/admin/index.html
+                        </th>
+                        <td class="fw-bolder text-gray-500">
+                            3,225
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            $20
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            <div class="d-flex">
+                                <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                42,55%
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-gray-900" scope="row">
+                            /demo/admin/forms.html
+                        </th>
+                        <td class="fw-bolder text-gray-500">
+                            2,987
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            0
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            <div class="d-flex">
+                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                43,24%
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-gray-900" scope="row">
+                            /demo/admin/util.html
+                        </th>
+                        <td class="fw-bolder text-gray-500">
+                            2,844
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                        294
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            <div class="d-flex">
+                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                32,35%
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-gray-900" scope="row">
+                            /demo/admin/validation.html
+                        </th>
+                        <td class="fw-bolder text-gray-500">
+                            2,050
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            $147
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            <div class="d-flex">
+                                <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                50,87%
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-gray-900" scope="row">
+                            /demo/admin/modals.html
+                        </th>
+                        <td class="fw-bolder text-gray-500">
+                            1,483
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            $19
+                        </td>
+                        <td class="fw-bolder text-gray-500">
+                            <div class="d-flex">
+                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                26,12%
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -11,42 +11,36 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunSQL(
             sql="""
-            CREATE VIEW v_entrada_mensal
-            AS
-            SELECT ROW_NUMBER() OVER () AS id,
-                l.nome as "localidade",
-                c.nome as "classe",
-                strftime('%Y',e.data) as "ano",
-                strftime('%m',e.data) as "mes",
-                SUM(e.peso) as peso
+            CREATE VIEW v_entrada_mensal AS
+            SELECT CAST(ROW_NUMBER() OVER () AS INTEGER) AS id,
+                CAST(strftime('%Y',e.data) AS INTEGER) AS ano,
+                CAST(strftime('%m',e.data) AS INTEGER) AS mes,
+                CAST(SUM(e.peso) AS REAL) AS peso,
+                l.nome AS localidade,
+                c.nome AS classe
             FROM entrada e
-            JOIN localidade l
-                ON e.id_localidade = l.id_localidade
-            JOIN classe c
-                ON e.id_classe = c.id_classe
-            GROUP BY localidade, classe, ano, mes;
+            JOIN localidade l ON e.id_localidade = l.id_localidade
+            JOIN classe c ON e.id_classe = c.id_classe
+            GROUP BY ano, mes, localidade, classe;
             """,
             reverse_sql="DROP VIEW v_entrada_mensal;",
         ),
 
         migrations.RunSQL(
             sql="""
-                CREATE VIEW v_saida_mensal
-                AS
-                SELECT ROW_NUMBER() OVER () AS id,
-                    l.nome as "localidade",
-                    c.nome as "classe",
-                    strftime('%Y',s.data) as "ano",
-                    strftime('%m',s.data) as "mes",
-                    SUM(s.peso) as peso,
-                    SUM(s.custo) as cuso,
-                    SUM(s.receita) as receita
+                CREATE VIEW v_saida_mensal AS
+                SELECT CAST(ROW_NUMBER() OVER () AS INTEGER) AS id,
+                    l.nome AS localidade,
+                    c.nome AS classe,
+                    CAST(strftime('%Y', s.data) AS INTEGER) AS ano,
+                    CAST(strftime('%m', s.data) AS INTEGER) AS mes,
+                    CAST(SUM(s.peso) AS REAL) AS peso,
+                    CAST(SUM(s.custo) AS REAL) AS custo,
+                    CAST(SUM(s.receita) AS REAL) AS receita
                 FROM saida s
-                JOIN localidade l
-                    ON s.id_localidade = l.id_localidade
-                JOIN classe c
-                    ON s.id_classe = c.id_classe
-                GROUP BY localidade, classe, ano, mes;
+                JOIN localidade l ON s.id_localidade = l.id_localidade
+                JOIN classe c ON s.id_classe = c.id_classe
+                GROUP BY ano, mes, localidade, classe;
                 """,
             reverse_sql="DROP VIEW v_saida_mensal;",
         ),

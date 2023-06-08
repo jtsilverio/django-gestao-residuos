@@ -14,8 +14,9 @@
                 <span class="badge bg-info rounded-pill ms-2">{{ number_of_active_filters }}</span>
             </button>
         </h2>
+        <!-- {% if number_of_active_filters > 0 %} show {% endif %} -->
         <div id="FiltersCollapse"
-             class="accordion-collapse collapse {% if number_of_active_filters > 0 %} show {% endif %}"
+             class="accordion-collapse collapse"
              data-bs-parent="#FiltersAccordion">
             <div class="accordion-body">
                 <form id="filters-form" method="get">

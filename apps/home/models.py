@@ -4,7 +4,7 @@ from django.db import models
 class EntradaMensal(models.Model):
     mes = models.CharField(max_length=50)
     ano = models.CharField(max_length=50)
-    peso = models.DecimalField(max_digits=5, decimal_places=2)
+    peso = models.FloatField()
     classe = models.CharField(max_length=50)
     localidade = models.CharField(max_length=50)
 
