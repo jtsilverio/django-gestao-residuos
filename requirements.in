@@ -2,3 +2,6 @@ Django<=4.2
 django-filter
 django-environ
 gunicorn
+plotly
+polars
+pandas

@@ -1,0 +1,13 @@
+,id,mes,ano,peso,classe,localidade,tipo,receita,custo
+0,1,1,2023,250.0,Papel,Minas Gerais,entrada,,
+1,2,1,2023,400.0,Metal,São Paulo,entrada,,
+2,3,2,2023,175.0,Metal,Minas Gerais,entrada,,
+3,4,2,2023,100.0,Papel,Minas Gerais,entrada,,
+4,5,2,2023,150.0,Metal,São Paulo,entrada,,
+5,6,4,2023,2500.0,Orgânico,São Paulo,entrada,,
+6,7,5,2023,123.2,Metal,São Paulo,entrada,,
+7,8,5,2023,555.0,Papel,São Paulo,entrada,,
+0,1,1,2023,25.00,Metal,São Paulo,saida,7.00,65.00
+1,2,1,2023,20.00,Orgânico,São Paulo,saida,0.00,100.00
+2,3,2,2023,30.00,Metal,Minas Gerais,saida,0.00,15.00
+3,4,5,2023,123.00,Papel,São Paulo,saida,1.00,2.00

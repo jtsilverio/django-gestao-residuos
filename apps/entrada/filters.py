@@ -7,7 +7,7 @@ from apps.classe.models import Classe
 from apps.localidade.models import Localidade
 
 class EntradaFilter(django_filters.FilterSet):
-    dt_entrada = django_filters.DateFilter(
+    data = django_filters.DateFilter(
         label="Data de Entrada",
         widget=DateInput(attrs={"type": "date", "class": "form-control", "style":"max-width: 200px;"}),
     )

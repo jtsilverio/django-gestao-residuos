@@ -6,21 +6,21 @@ class EntradaForm(ModelForm):
         model = Entrada
 
         fields = [
-            "dt_entrada",
+            "data",
             "id_localidade",
             "id_classe",
             "peso",
         ]
 
         labels = {
-            "dt_entrada": "Data de Entrada",
+            "data": "Data de Entrada",
             "id_localidade": "Localidade",
             "id_classe": "Classe",
             "peso": "Peso",
         }
 
         widgets = {
-            "dt_entrada": DateInput(
+            "data": DateInput(
                 format=("%Y-%m-%d"),
                 attrs={
                     "class": "form-control",

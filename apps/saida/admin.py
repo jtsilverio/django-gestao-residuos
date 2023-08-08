@@ -10,7 +10,7 @@ class SaidaAdmin(admin.ModelAdmin):
         "id_localidade",
         "id_fornecedor",
         "id_destinacao",
-        "dt_saida",
+        "data",
         "peso",
         "receita",
         "custo",
@@ -22,14 +22,14 @@ class SaidaAdmin(admin.ModelAdmin):
         "id_localidade",
         "id_fornecedor",
         "id_destinacao",
-        "dt_saida",
+        "data",
     ]
     search_fields = [
         "id_classe__nome",
         "id_localidade__nome",
         "id_fornecedor__nome",
         "id_destinacao__nome",
-        "dt_saida",
+        "data",
     ]
     list_per_page = 15
 

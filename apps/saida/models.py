@@ -8,7 +8,9 @@ from apps.localidade.models import Localidade
 # Create your models here.
 class Saida(models.Model):
     id_saida = models.AutoField(primary_key=True)
-    id_classe = models.ForeignKey(Classe, models.DO_NOTHING, db_column="id_classe")
+    id_classe = models.ForeignKey(
+        Classe, models.DO_NOTHING, db_column="id_classe"
+    )
     id_localidade = models.ForeignKey(
         Localidade, models.DO_NOTHING, db_column="id_localidade"
     )
@@ -18,7 +20,7 @@ class Saida(models.Model):
     id_destinacao = models.ForeignKey(
         Destinacao, models.DO_NOTHING, db_column="id_destinacao"
     )
-    dt_saida = models.DateField(null=False, blank=False)
+    data = models.DateField(null=False, blank=False)
     peso = models.DecimalField(
         max_digits=10, decimal_places=2, default=0, null=False, blank=False
     )

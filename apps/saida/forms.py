@@ -8,7 +8,7 @@ class SaidaForm(forms.ModelForm):
         model = Saida
 
         fields = [
-            "dt_saida",
+            "data",
             "id_localidade",
             "id_classe",
             "peso",
@@ -21,7 +21,7 @@ class SaidaForm(forms.ModelForm):
         ]
 
         labels = {
-            "dt_saida": "Data de Saída",
+            "data": "Data de Saída",
             "id_localidade": "Localidade",
             "id_classe": "Classe",
             "peso": "Peso",
@@ -34,7 +34,7 @@ class SaidaForm(forms.ModelForm):
         }
 
         widgets = {
-            "dt_saida": forms.DateInput(
+            "data": forms.DateInput(
                 format=("%Y-%m-%d"),
                 attrs={
                     "class": "form-control",

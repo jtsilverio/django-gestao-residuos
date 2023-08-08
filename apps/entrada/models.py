@@ -5,7 +5,7 @@ from apps.localidade.models import Localidade
 
 class Entrada(models.Model):
     id_entrada = models.AutoField(primary_key=True)
-    dt_entrada = models.DateField(null=False, blank=False)
+    data = models.DateField(null=False, blank=False)
     id_classe = models.ForeignKey(Classe, models.DO_NOTHING, db_column="id_classe")
     id_localidade = models.ForeignKey(
         Localidade, models.DO_NOTHING, db_column="id_localidade"

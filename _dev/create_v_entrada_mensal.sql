@@ -2,8 +2,8 @@ CREATE VIEW v_entrada_mensal
 AS
 SELECT  l.nome as "localidade",
 		c.nome as "classe",
-		strftime('%Y',e.dt_entrada) as "ano",
-		strftime('%m',e.dt_entrada) as "mes",
+		strftime('%Y',e.data) as "ano",
+		strftime('%m',e.data) as "mes",
 		SUM(e.peso) as peso_mensal
 FROM entrada e 
 JOIN localidade l 
