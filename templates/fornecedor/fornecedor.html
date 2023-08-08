@@ -1,19 +1,44 @@
-{% extends 'base.html' %}
-{% block title %}Fornecedor{% endblock %}
+{% extends 'base_card.html' %}
+{% block title %}Fornecedores{% endblock %}
 {% block content %}
-<section class="card border-0 shadow">
-    <div class="card-body">
-            <a href="fornecedor_cadastro.html">
-            <navbar bg-body-tertiary">
-                <form class="container-fluid justify-content-start">
-                    <button class="btn btn-outline-success me-2" type="button">
-                    Cadastrar Fornecedor
-                    </button>
-                </form>
-            </a> 
-            </nav>
-        </navbar>
+    <div class="table-responsive">
+        <table class="table table-centered mb-0 rounded table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="align-middle border-0 rounded-start">Fornecedor</th>
+                    <th class="align-middle border-0">Destinação</th>
+                    <th class="align-middle border-0 rounded-end"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in object_list %}
+                    <tr class="align-middle">
+                        <td>{{ entry.nome }}</td>
+                        <td>
+                            <div class="d-flex justify-content-end me-3">
+                                <a href="{% url 'fornecedor_edit' pk=entry.id_fornecedor %}" title="Editar">
+                                    <button class="btn btn-sm shadow-none border-0">
+                                        <i class="bi bi-pencil-square text-secondary"></i>
+                                    </button>
+                                </a>
+                                <form onsubmit="return confirm('Confirmar deleção?');"
+                                      action="{% url 'fornecedor_delete' pk=entry.id_fornecedor %}"
+                                      method="POST"
+                                      value="delete">
+                                    {% csrf_token %}
+                                    <button class="btn btn-sm shadow-none border-0" title="Deletar">
+                                        <i class="bi bi-x-circle text-danger"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">Nenhum Fornecedor cadastrado</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-</section>
-
-{% endblock %}
+{% endblock content %}
