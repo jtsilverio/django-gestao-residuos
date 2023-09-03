@@ -6,7 +6,7 @@ A waste management CRUD made in Django. Put into production using fly.io.
 `pip install -r requirements-dev.txt`
 
 ## Criar arquivo `.env`
-1. O arquivo `.env` deve conter duas variáveis de ambiente:
+Nesse projeto estamos usando o pacote `environ` para administrar as variáveis de ambiente requeridas pelo projeto. Assim, na pasta raiz do projeto devemos criar um arquivo `.env` que contem as variáveis de ambiente usadas pelo sistema:
   - `SECRET_KEY`: Uma chave secreta gerada pelo Django para proteção de formuários e cookies
   - `DEBUG`: Uma flag booleana que indica se estamos em um ambiente de produção ou de desenvolvimento.
 
@@ -20,7 +20,8 @@ A waste management CRUD made in Django. Put into production using fly.io.
       from django.core.management.utils import get_random_secret_key
       print("SECRET_KEY=" + get_random_secret_key())
       ```
-  - Abre o `.env` e cria uma cole `DEBUG=True` após a linha contendo a chave do Django.
+      - Cole o output desse comando no arquivo `.env`
+  - Para setar o debug como True, caso em esteja em um ambiente de desenvolvimento, abra o `.env` adicione `DEBUG=True`.
 
 ## Rodando servidor de desenvolvimento
 `python manage.py runserver`
