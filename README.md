@@ -4,6 +4,7 @@ A waste management CRUD made in Django. Put into production using fly.io.
 # Set up para desenvolvimento:
 ## Instalar depenências:
 `pip install -r requirements-dev.txt`
+`pip install -r requirements.txt`
 
 ## Criar arquivo `.env`
 Nesse projeto estamos usando o pacote `environ` para administrar as variáveis de ambiente requeridas pelo projeto. Assim, na pasta raiz do projeto devemos criar um arquivo `.env` que contem as variáveis de ambiente usadas pelo sistema:
