@@ -25,4 +25,7 @@ urlpatterns = [
     path("localidade/", include("apps.localidade.urls")),
     path("classe/", include("apps.classe.urls")),
     path("destinacao/", include("apps.destinacao.urls")),
+    path("agua/", include("apps.agua.urls")),
+    path("eletricidade/", include("apps.eletricidade.urls")),
+    path("combustivel/", include("apps.combustivel.urls")),
 ]
