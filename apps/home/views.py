@@ -1,12 +1,12 @@
 from datetime import datetime, timedelta
 
+import pandas as pd
+import plotly.express as px
 from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import render
 
 from apps.home.models import EntradaMensal, SaidaMensal
-import plotly.express as px
-import pandas as pd
 
 
 def get_mothly_dataframe(
