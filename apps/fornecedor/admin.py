@@ -4,7 +4,7 @@ from .models import Destinacao, Fornecedor
 
 
 class FornecedorInline(admin.TabularInline):
-    model = Fornecedor.id_destinacao.through
+    model = Fornecedor.destinacao.through
     extra = 0
 
 

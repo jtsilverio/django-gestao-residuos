@@ -1,26 +1,82 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% load static %}
+{% load is_checkbox %}
 
 {% block title %}
-    Cadastro Fornecedor
-{% endblock title %}
+Cadastro Fornecedor
+{% endblock %}
 
 {% block content %}
-    <section class="card border-0 shadow">
-        <div class="card-body">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="row g-2">
-                    {% for field in form %}
-                        <div class="col">
-                            {{ field.label_tag }}
-                            {{ field }}
-                        </div>
-                    {% endfor %}
-                    <div class="col mt-auto">
-                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                    </div>
-                </div>
-            </form>
+<section class="card border-0 shadow">
+  <div class="card-body">
+    <form method="POST" id="form-fornecedor">
+      {% csrf_token %}
+      <div class="row g-2">
+        {% for field in form %}
+        <div class="col me-2">
+          {% if field|is_multiple_choice %}
+          {{ field.label_tag }}
+          {% for choice in field %}
+          <div class="form-check mb-0">
+            {{ choice.tag }}
+            <label class="form-check-label mb-0" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+          </div>
+          {% endfor %}
+          {% else %}
+          {{ field.label_tag }}
+          {{ field }}
+          {% endif %}
         </div>
-    </section>
-{% endblock content %}
+        {% endfor %}
+        <div class="col mt-auto">
+          <button type="submit" class="btn btn-primary">Adicionar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  // get a reference to the dropdown and the field
+  const dropdown_residuos = document.getElementById('id_tp_fornecedor')
+  const destinacao_checkbox = document.getElementsByClassName('form-check-input')
+  const form = document.getElementById('form-fornecedor');
+
+
+  // add an event listener to the dropdown
+  dropdown_residuos.addEventListener('change', function () {
+    // check if the selected value is the one that should enable the field
+    if (dropdown_residuos.value === 'Resíduos' | dropdown_residuos.value === 'Selecione...') {
+      for (let i = 0; i < destinacao_checkbox.length; i++) {
+        destinacao_checkbox[i].disabled = false
+      }
+    } else {
+      for (let i = 0; i < destinacao_checkbox.length; i++) {
+        destinacao_checkbox[i].checked = false
+        destinacao_checkbox[i].disabled = true
+      }
+    }
+  })
+
+  // add an event listener to the form
+  form.addEventListener('submit', function (event) {
+    // check if the id_tp_fornecedor is "Resíduos"
+    if (dropdown_residuos.value === 'Resíduos') {
+      // check if at least one Destinacao checkbox is checked
+      let atLeastOneChecked = false;
+      for (let i = 0; i < destinacao_checkbox.length; i++) {
+        if (destinacao_checkbox[i].checked) {
+          atLeastOneChecked = true;
+          break;
+        }
+      }
+      if (!atLeastOneChecked) {
+        // prevent the form from submitting
+        event.preventDefault();
+        alert('É obrigatório ao menos um tipo de Destinação feita pelo Fornecedor sendo cadastrado.');
+      }
+    }
+  });
+</script>
+{% endblock %}

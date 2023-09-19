@@ -1,9 +1,16 @@
 from django import forms
 
+from apps.fornecedor.models import Fornecedor
 from apps.saida.models import Saida
 
 
 class SaidaForm(forms.ModelForm):
+    id_fornecedor = forms.ModelChoiceField(
+        label="Fornecedor",
+        queryset=Fornecedor.objects.filter(tp_fornecedor__exact="Resíduos"),
+        widget=forms.Select(attrs={"class": "form-select"}),
+    )
+
     class Meta:
         model = Saida
 
