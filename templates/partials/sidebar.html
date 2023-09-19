@@ -27,9 +27,9 @@
                         <span class="sidebar-icon">
                             <img src="{% static 'img/brand/leaves.png' %}" height="20" width="20" alt="Volt Logo">
                         </span>
-                        <span class="mt-1 ms-1 sidebar-text">Gestão de Resíduos</span>
+                        <span class="mt-1 ms-1 sidebar-text">Gestão Ambiental</span>
                     </div>
-                    
+
                     <!-- Close Button -->
                     <div class="collapse-close d-md-none">
                         <a href="#sidebarMenu" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
@@ -75,7 +75,7 @@
                                 fill-rule="evenodd"></path>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Entrada</span>
+                    <span class="sidebar-text">Entrada de Resíduo</span>
                 </a>
             </li>
 
@@ -93,27 +93,11 @@
                             </path>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Saída</span>
+                    <span class="sidebar-text">Saída de Resíduo</span>
                 </a>
             </li>
 
-            <!-- Localidade -->
-            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
-                <a href="{% url 'localidade' %}" class="nav-link">
-                    <span class="sidebar-icon">
-
-                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                d="M8.161 2.58a1.875 1.875 0 011.678 0l4.993 2.498c.106.052.23.052.336 0l3.869-1.935A1.875 1.875 0 0121.75 4.82v12.485c0 .71-.401 1.36-1.037 1.677l-4.875 2.437a1.875 1.875 0 01-1.676 0l-4.994-2.497a.375.375 0 00-.336 0l-3.868 1.935A1.875 1.875 0 012.25 19.18V6.695c0-.71.401-1.36 1.036-1.677l4.875-2.437zM9 6a.75.75 0 01.75.75V15a.75.75 0 01-1.5 0V6.75A.75.75 0 019 6zm6.75 3a.75.75 0 00-1.5 0v8.25a.75.75 0 001.5 0V9z"
-                                fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Localidade</span>
-                </a>
-            </li>
-
-            <!-- Classe -->
+            <!-- Classe de Resíduo-->
             <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
                 <a href="{% url 'classe' %}" class="nav-link">
                     <span class="sidebar-icon">
@@ -124,7 +108,7 @@
                                 fill-rule="evenodd"></path>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Classe</span>
+                    <span class="sidebar-text">Classe de Resíduo</span>
                 </a>
             </li>
 
@@ -144,7 +128,54 @@
                 </a>
             </li>
 
-            
+
+            <!-- Divisão -->
+            <hr class="mt-2 mb-2 border-gray-400">
+
+            <!-- Eletricidade -->
+            <li class="nav-item {% if 'eletricidade' in segment %} active {% endif %}">
+                <a href="{% url 'eletricidade' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <i class="bi bi-lightning-charge-fill me-2"></i>
+                    </span>
+                    <span class="sidebar-text">Eletricidade</span>
+                </a>
+            </li>
+
+            <!-- Água -->
+            <li class="nav-item {% if 'agua' in segment %} active {% endif %}">
+                <a href="{% url 'agua' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <i class="bi bi-droplet-fill me-2"></i>
+                    </span>
+                    <span class="sidebar-text">Água</span>
+                </a>
+            </li>
+
+            <!-- Combustivel -->
+            <li class="nav-item {% if 'combustivel' in segment %} active {% endif %}">
+                <a href="{% url 'combustivel' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <i class="bi bi-fuel-pump-fill me-2"></i>
+                    </span>
+                    <span class="sidebar-text">Combustível</span>
+                </a>
+            </li>
+
+            <!-- Divisão -->
+            <hr class="mt-2 mb-2 border-gray-400">
+
+            <!-- Localidade -->
+            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
+                <a href="{% url 'localidade' %}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <i class="bi bi-geo-alt-fill me-2"></i>
+                    </span>
+                    <span class="sidebar-text">Localidade</span>
+                </a>
+            </li>
+
+
             <!-- Fornecedores -->
             <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
                 <a href="{% url 'fornecedor' %}" class="nav-link">
@@ -164,7 +195,7 @@
             </li>
 
             <!-- Divisão -->
-            <hr class="mt-4 mb-4 border-gray-400">
+            <hr class="mt-2 mb-2 border-gray-400">
 
             <!-- Admin -->
             <li class="nav-item">

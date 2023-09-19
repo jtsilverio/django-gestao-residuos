@@ -5,9 +5,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from apps.fornecedor.models import Fornecedor
 from apps.fornecedor.filters import FornecedorFilter
 from apps.fornecedor.forms import FornecedorForm
+from apps.fornecedor.models import Fornecedor
 from apps.utils import count_active_filters
 
 PAGESIZE = 15
@@ -33,7 +33,13 @@ class FornecedorCreate(SuccessMessageMixin, CreateView):
     form_class = FornecedorForm
     template_name = "fornecedor/fornecedor_cadastro.html"
     success_message = "Fornecedor cadastrado"
-    success_url = reverse_lazy("classe")
+    success_url = reverse_lazy("fornecedor")
+
+    ## make destinacao disabled by default
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["destinacao"].disabled = True
+        return form
 
 
 class FornecedorEdit(SuccessMessageMixin, UpdateView):
@@ -41,7 +47,7 @@ class FornecedorEdit(SuccessMessageMixin, UpdateView):
     form_class = FornecedorForm
     template_name = "fornecedor/fornecedor_edit.html"
     success_message = "Fornecedor atualizado"
-    success_url = reverse_lazy("classe")
+    success_url = reverse_lazy("fornecedor")
 
 
 def fornecedor_delete(request, pk):

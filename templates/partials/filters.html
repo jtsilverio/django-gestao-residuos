@@ -22,7 +22,7 @@
                 <form id="filters-form" method="get">
                     <div class="row g-2">
                         {% for field in filter_form %}
-                            <div class="col me-3">
+                            <div class="col me-2">
                                 {% if field|is_multiple_choice %}
                                     {{ field.label_tag }}
                                     {% if field|length <= 0 %}
@@ -31,7 +31,7 @@
                                         {% for choice in field %}
                                             <div class="form-check">
                                                 {{ choice.tag }}
-                                                <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                                                <label class="form-check-label mb-0" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
                                             </div>
                                         {% endfor %}
                                     {% endif %}
