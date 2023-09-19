@@ -8,11 +8,14 @@ INSERT INTO destinacao (nome) VALUES
 	 ('Aterro'),
 	 ('Incineração');
 
-INSERT INTO fornecedor (nome) VALUES
-	 ('Eko Sustentável'),
-	 ('Reciclar+'),
-	 ('Incinerar & Reciclar'),
-	 ('TerraSustentável');
+INSERT INTO fornecedor (nome, tp_fornecedor) VALUES
+	 ('Eko Sustentável','Resíduos'),
+	 ('Reciclar+','Resíduos'),
+	 ('Incinerar & Reciclar','Resíduos'),
+	 ('TerraSustentável','Resíduos'),
+	 ('Lux','Eletricidade'),
+	 ('SABESP','Água'),
+	 ('Shell','Combustível');
 
 INSERT INTO fornecedor_destinacao (fornecedor_id,destinacao_id) VALUES
 	 (1,1),
