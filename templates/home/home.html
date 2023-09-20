@@ -5,7 +5,7 @@
 {% block content %}
     <div class="card border-0 shadow mb-4">
         <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Gráfico</h6>
+            <h5 class="mb-0">Dashboard - Gestão de Resíduos©</h6>
         </div>
         <div class="card-body">
             <div class="chart">{{ plot|safe }}</div>
@@ -61,15 +61,15 @@
                                 </div>
                                 <div class="small d-flex mt-1">
                                     <small class="d-flex align-items-center">
-                                        <i class="bi bi-calendar2-fill text-gray-400 me-1 small"></i> mar 13 - apr 12
+                                        <i class="bi bi-calendar2-fill text-gray-400 me-1 small"></i> set 18 - ago 17
                                     </small>
                                 </div>
                                 <div class="small d-flex mt-1">
-                                    <div class="small {% if stats.trend == 'down' %} text-success {% elif stats.trend == 'up' %} text-danger {% endif %}">
+                                    <div class="small {% if stats.trend == 'down' %} text-danger {% elif stats.trend == 'up' %} text-success {% endif %}">
                                         <i class="bi {% if stats.trend == 'down' %} bi-caret-down-fill {% elif stats.trend == 'up' %} bi-caret-up-fill {% endif %}"></i>
                                         <span class="fw-bolder me-1">{{ stats.diff_perc }}%</span>
                                     </div>
-                                    <span class="small"> desde mês passado</span>
+                                    <span class="small"> desde mês passado (d - 30)</span>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
 
     <div class="card border-0 shadow">
         <div class="card-header">
-            <h2 class="fs-5 fw-bold mb-1">Visits past 30 days by country</h2>
+            <h2 class="fs-5 fw-bold mb-1">Maiores Fluxos dos resíduos (Entradas + Saídas)</h2>
         </div>
 
         <div class="card-body py-4">
@@ -89,13 +89,13 @@
                 <div class="col-auto">
                     <!-- Avatar -->
                     <a href="#" class="image image-xs rounded-circle">
-                    <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/united-states-of-america.svg">
+                    <img alt="Image placeholder" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Bandeira_de_Minas_Gerais.svg/1280px-Bandeira_de_Minas_Gerais.svg.png">
                     </a>
                 </div>
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">United States <span class="text-gray-500 font-small">(272.109)</span></div>
+                            <div class="h6 mb-0">Minas Gerais<span class="text-gray-500 font-small">(272.109)</span></div>
                             <div class="small fw-bold"><span>34 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -108,13 +108,13 @@
                 <div class="col-auto">
                     <!-- Avatar -->
                     <a href="#" class="image image-xs rounded-circle">
-                        <img alt="Image placeholder" src="https://appsrv1-147a1.kxcdn.com/volt-dashboard-pro-v141/img/flags/canada.svg">
+                        <img alt="Image placeholder" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bandeira_do_estado_de_S%C3%A3o_Paulo.svg/640px-Bandeira_do_estado_de_S%C3%A3o_Paulo.svg.png">
                     </a>
                 </div>
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">Canada <span class="text-gray-500 font-small">(160.064)</span></div>
+                            <div class="h6 mb-0">São Paulo <span class="text-gray-500 font-small">(160.064)</span></div>
                             <div class="small fw-bold"><span>20 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -133,7 +133,7 @@
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">Germany <span class="text-gray-500 font-small">(120.048)</span></div>
+                            <div class="h6 mb-0">Localidade 3 <span class="text-gray-500 font-small">(120.048)</span></div>
                             <div class="small fw-bold"><span>15 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -152,7 +152,7 @@
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">France <span class="text-gray-500 font-small">(100.048)</span></div>
+                            <div class="h6 mb-0">Localidade 4<span class="text-gray-500 font-small">(100.048)</span></div>
                             <div class="small fw-bold"><span>8 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -171,7 +171,7 @@
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">Japan <span class="text-gray-500 font-small">(56.022)</span></div>
+                            <div class="h6 mb-0">Localidade 5<span class="text-gray-500 font-small">(56.022)</span></div>
                             <div class="small fw-bold"><span>7 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -190,7 +190,7 @@
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">Italy <span class="text-gray-500 font-small">(48.019)</span></div>
+                            <div class="h6 mb-0">Localidade 6<span class="text-gray-500 font-small">(48.019)</span></div>
                             <div class="small fw-bold"><span>6 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -209,7 +209,7 @@
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">Netherlands <span class="text-gray-500 font-small">(40.016)</span></div>
+                            <div class="h6 mb-0">Localidade 7<span class="text-gray-500 font-small">(40.016)</span></div>
                             <div class="small fw-bold"><span>5 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -228,7 +228,7 @@
                 <div class="col">
                     <div class="progress-wrapper">
                         <div class="progress-info">
-                            <div class="h6 mb-0">Sweden <span class="text-gray-500 font-small">(26.016)</span></div>
+                            <div class="h6 mb-0">Localidade 8<span class="text-gray-500 font-small">(26.016)</span></div>
                             <div class="small fw-bold"><span>3 %</span></div>
                         </div>
                         <div class="progress mb-0">
@@ -241,7 +241,7 @@
         <div class="card-footer bg-gray-50 border-top text-center">
             <a class="fw-bold d-flex align-items-center justify-content-center" href="../calendar.html">
                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
-                See all
+                Não clique aqui
             </a>
         </div>
     </div>
@@ -251,10 +251,10 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h2 class="fs-5 fw-bold mb-0">Page visits</h2>
+                        <h2 class="fs-5 fw-bold mb-0">Classes de Resíduos</h2>
                     </div>
                     <div class="col text-end">
-                        <a href="./traffic-sources.html" class="btn btn-sm btn-primary">See all</a>
+                        <a href="./traffic-sources.html" class="btn btn-sm btn-primary">Nem aqui</a>
                     </div>
                 </div>
             </div>
@@ -262,95 +262,95 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                     <tr>
-                        <th class="border-bottom" scope="col">Page name</th>
-                        <th class="border-bottom" scope="col">Page Views</th>
-                        <th class="border-bottom" scope="col">Page Value</th>
-                        <th class="border-bottom" scope="col">Bounce rate</th>
+                        <th class="border-bottom" scope="col">Classe do Material</th>
+                        <th class="border-bottom" scope="col">Peso Médio por Mês</th>
+                        <th class="border-bottom" scope="col">Valor Médio do último mês (R$)</th>
+                        <th class="border-bottom" scope="col">Valorização sobre o mês anterior (%)</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <th class="text-gray-900" scope="row">
-                            /demo/admin/index.html
+                            Orgânico
                         </th>
                         <td class="fw-bolder text-gray-500">
-                            3,225
+                            43,22
                         </td>
                         <td class="fw-bolder text-gray-500">
-                            $20
+                            R$ 20,00
                         </td>
                         <td class="fw-bolder text-gray-500">
                             <div class="d-flex">
-                                <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                                42,55%
+                                <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                -2,55%
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th class="text-gray-900" scope="row">
-                            /demo/admin/forms.html
+                            Papel
                         </th>
                         <td class="fw-bolder text-gray-500">
-                            2,987
+                            25.98
                         </td>
                         <td class="fw-bolder text-gray-500">
-                            0
+                            R$ 14,43
                         </td>
                         <td class="fw-bolder text-gray-500">
                             <div class="d-flex">
-                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                43,24%
+                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                3,24%
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th class="text-gray-900" scope="row">
-                            /demo/admin/util.html
+                            Metal
                         </th>
                         <td class="fw-bolder text-gray-500">
-                            2,844
+                            2,84
                         </td>
                         <td class="fw-bolder text-gray-500">
-                        294
+                        R$ 294,3
                         </td>
                         <td class="fw-bolder text-gray-500">
                             <div class="d-flex">
-                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                32,35%
+                                <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                -0,35%
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th class="text-gray-900" scope="row">
-                            /demo/admin/validation.html
+                            Classe 4
                         </th>
                         <td class="fw-bolder text-gray-500">
-                            2,050
+                            0,00
                         </td>
                         <td class="fw-bolder text-gray-500">
-                            $147
+                            R$ 0,00
                         </td>
                         <td class="fw-bolder text-gray-500">
                             <div class="d-flex">
-                                <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                                50,87%
+                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                0,00%
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th class="text-gray-900" scope="row">
-                            /demo/admin/modals.html
+                            Classe 5
                         </th>
                         <td class="fw-bolder text-gray-500">
-                            1,483
+                            0,00
                         </td>
                         <td class="fw-bolder text-gray-500">
-                            $19
+                            R$ 0,00
                         </td>
                         <td class="fw-bolder text-gray-500">
                             <div class="d-flex">
-                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                26,12%
+                                <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                0,00 %
                             </div>
                         </td>
                     </tr>
