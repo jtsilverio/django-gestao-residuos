@@ -11,6 +11,7 @@ endif
 clean_migrations:
 	find . -path "*/migrations/*.py" -not -name "__init__.py" -not -path "./venv/*" -not -path "*/home/migrations/*.py" -delete
 	find . -path "*/migrations/*.pyc" -not -path "./venv/*" -not -path "*/home/migrations/*.pyc" -delete
+	rm db.sqlite3
 
 install-pip-tools:
 	$(PYTHON_INTERPRETER) -m pip install pip-tools

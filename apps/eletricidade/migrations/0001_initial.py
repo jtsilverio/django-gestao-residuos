@@ -8,26 +8,33 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("classe", "0001_initial"),
+        ("fornecedor", "0001_initial"),
         ("localidade", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Entrada",
+            name="Eletricidade",
             fields=[
-                ("id_entrada", models.AutoField(primary_key=True, serialize=False)),
-                ("data", models.DateField()),
                 (
-                    "peso",
+                    "id_eletricidade",
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
+                ("dt_eletricidade", models.DateField()),
+                (
+                    "consumo",
                     models.DecimalField(decimal_places=2, default=0, max_digits=10),
                 ),
                 (
-                    "id_classe",
+                    "custo",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=10),
+                ),
+                (
+                    "id_fornecedor",
                     models.ForeignKey(
-                        db_column="id_classe",
+                        db_column="id_fornecedor",
                         on_delete=django.db.models.deletion.DO_NOTHING,
-                        to="classe.classe",
+                        to="fornecedor.fornecedor",
                     ),
                 ),
                 (
@@ -40,8 +47,10 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "db_table": "entrada",
-                "ordering": ["-id_entrada"],
+                "verbose_name": "Eletricidade",
+                "verbose_name_plural": "Eletricidades",
+                "db_table": "eletricidade",
+                "ordering": ["-id_eletricidade"],
             },
         ),
     ]
