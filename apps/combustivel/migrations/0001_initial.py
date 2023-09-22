@@ -8,26 +8,30 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("classe", "0001_initial"),
+        ("fornecedor", "0001_initial"),
         ("localidade", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Entrada",
+            name="Combustivel",
             fields=[
-                ("id_entrada", models.AutoField(primary_key=True, serialize=False)),
-                ("data", models.DateField()),
+                ("id_combustivel", models.AutoField(primary_key=True, serialize=False)),
+                ("dt_combustivel", models.DateField()),
                 (
-                    "peso",
+                    "consumo",
                     models.DecimalField(decimal_places=2, default=0, max_digits=10),
                 ),
                 (
-                    "id_classe",
+                    "custo",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=10),
+                ),
+                (
+                    "id_fornecedor",
                     models.ForeignKey(
-                        db_column="id_classe",
+                        db_column="id_fornecedor",
                         on_delete=django.db.models.deletion.DO_NOTHING,
-                        to="classe.classe",
+                        to="fornecedor.fornecedor",
                     ),
                 ),
                 (
@@ -40,8 +44,10 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "db_table": "entrada",
-                "ordering": ["-id_entrada"],
+                "verbose_name": "Combustível",
+                "verbose_name_plural": "Combustíveis",
+                "db_table": "combustivel",
+                "ordering": ["-id_combustivel"],
             },
         ),
     ]

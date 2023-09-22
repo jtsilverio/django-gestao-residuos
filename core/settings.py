@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from os import path
 from pathlib import Path
+
 import environ
 from django.core.management.utils import get_random_secret_key
 
-env = environ.Env(  
+env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False),
 )
@@ -25,20 +26,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Take environment variables from .env file
-environ.Env.read_env(BASE_DIR / '.env')  # <-- Updated!
+environ.Env.read_env(BASE_DIR / ".env")  # <-- Updated!
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())  # <-- Updated!
+SECRET_KEY = env.str("SECRET_KEY", default=get_random_secret_key())  # <-- Updated!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG", default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
-CSRF_TRUSTED_ORIGINS = ['https://django-gestao-residuos.fly.dev']
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".fly.dev"]
+CSRF_TRUSTED_ORIGINS = ["https://django-gestao-residuos.fly.dev"]
 
 # Application definition
 
@@ -57,6 +58,9 @@ INSTALLED_APPS = [
     "apps.saida.apps.SaidaConfig",
     "apps.fornecedor.apps.FornecedorConfig",
     "apps.home.apps.HomeConfig",
+    "apps.agua.apps.AguaConfig",
+    "apps.combustivel.apps.CombustivelConfig",
+    "apps.eletricidade.apps.EletricidadeConfig",
 ]
 
 MIDDLEWARE = [
