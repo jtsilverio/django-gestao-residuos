@@ -122,12 +122,10 @@ def monthly_lineplot(monthly_dict):
         },
     )
     plot.update_xaxes(type="category")
-    plot.update_traces(
-        line=dict_plot(width=5), marker=dict_plot(size=9), hovertemplate=None
-    )
+    plot.update_traces(line=dict(width=5), marker=dict(size=9), hovertemplate=None)
     plot.update_layout(
-        margin=dict_plot(l=5, r=5, t=5, b=5),
-        legend=dict_plot(
+        margin=dict(l=5, r=5, t=5, b=5),
+        legend=dict(
             orientation="h",
             yanchor="bottom",
             y=1.02,
