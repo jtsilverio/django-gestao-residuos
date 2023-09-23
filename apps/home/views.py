@@ -78,7 +78,8 @@ def get_dashboard_stats(monthly_data):
 
 
 def monthly_lineplot(monthly_dict):
-    dic = {}
+    dict = {}
+
     # Encontre o ano e mês mínimo e máximo na tabela original
     ano_minimo = min(values["ano"] for values in monthly_dict.values())
     ano_maximo = max(values["ano"] for values in monthly_dict.values())
@@ -89,8 +90,8 @@ def monthly_lineplot(monthly_dict):
         for mes in range(mes_minimo, mes_maximo + 1):
             for tipo in list(set(values["tipo"] for values in monthly_dict.values())):
                 chave = (ano, mes, tipo)
-                if chave not in dic:
-                    dic[chave] = {"mes": mes, "tipo": tipo, "peso": 0, "ano": ano}
+                if chave not in dict:
+                    dict[chave] = {"mes": mes, "tipo": tipo, "peso": 0, "ano": ano}
 
     for values in monthly_dict.values():
         mes = values["mes"]
@@ -99,11 +100,11 @@ def monthly_lineplot(monthly_dict):
         ano = values["ano"]
 
         chave = (ano, mes, tipo)  # Usar uma tupla como chave para evitar duplicatas
-        dic[chave]["peso"] += peso
+        dict[chave]["peso"] += peso
 
     # criar uma lista de dicionários a partir do dicionário
     lista_de_dicionarios = sorted(
-        list(dic.values()), key=lambda x: (x["ano"], x["mes"], x["tipo"])
+        list(dict.values()), key=lambda x: (x["ano"], x["mes"], x["tipo"])
     )
 
     plot = px.line(
