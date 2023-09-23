@@ -6,41 +6,43 @@ from django.shortcuts import render
 from apps.home.models import EntradaMensal, SaidaMensal
 
 
-def get_mothly_dataframe(year: int):
-    monthly_dic = {}
-    cont = 0  # contador para índice
-    for data in list(EntradaMensal.objects.filter(ano=year).all().values()):
+def get_mothly_data(year: int):
+    monthly_dict = {}
+
+    for i, data in enumerate(
+        list(EntradaMensal.objects.filter(ano=year).all().values())
+    ):
         del data["id"]
         data["peso"] = float(data["peso"])
         data["tipo"] = "entrada"
-        monthly_dic[cont] = data
-        cont += 1
+        monthly_dict[i] = data
+        i += 1
 
-    for data in list(SaidaMensal.objects.filter(ano=year).all().values()):
+    for i, data in enumerate(list(SaidaMensal.objects.filter(ano=year).all().values())):
         del data["id"]
         data["peso"] = float(data["peso"])
         data["receita"] = float(data["receita"])
         data["custo"] = float(data["custo"])
         data["tipo"] = "saida"
-        monthly_dic[cont] = data
-        cont += 1
+        monthly_dict[i] = data
+        i += 1
 
-    return monthly_dic
+    return monthly_dict
 
 
-def get_dashboard_stats(monthly_dic):
+def get_dashboard_stats(monthly_dict):
     current_month = datetime.now().month - 1
     dashboard_stats = {}
     for tipo_dado in ["entrada", "saida"]:
         current_month_peso = sum(
             v["peso"]
-            for v in monthly_dic.values()
+            for v in monthly_dict.values()
             if v["mes"] == current_month and v["tipo"] == tipo_dado
         )
 
         last_month_peso = sum(
             v["peso"]
-            for v in monthly_dic.values()
+            for v in monthly_dict.values()
             if v["mes"] == current_month - 1 and v["tipo"] == tipo_dado
         )
 
@@ -76,22 +78,22 @@ def get_dashboard_stats(monthly_dic):
     return dashboard_stats
 
 
-def monthly_lineplot(monthly_dic):
+def monthly_lineplot(monthly_dict):
     dic = {}
     # Encontre o ano e mês mínimo e máximo na tabela original
-    ano_minimo = min(values["ano"] for values in monthly_dic.values())
-    ano_maximo = max(values["ano"] for values in monthly_dic.values())
-    mes_minimo = min(values["mes"] for values in monthly_dic.values())
-    mes_maximo = max(values["mes"] for values in monthly_dic.values())
+    ano_minimo = min(values["ano"] for values in monthly_dict.values())
+    ano_maximo = max(values["ano"] for values in monthly_dict.values())
+    mes_minimo = min(values["mes"] for values in monthly_dict.values())
+    mes_maximo = max(values["mes"] for values in monthly_dict.values())
 
     for ano in range(ano_minimo, ano_maximo + 1):
         for mes in range(mes_minimo, mes_maximo + 1):
-            for tipo in list(set(values["tipo"] for values in monthly_dic.values())):
+            for tipo in list(set(values["tipo"] for values in monthly_dict.values())):
                 chave = (ano, mes, tipo)
                 if chave not in dic:
                     dic[chave] = {"mes": mes, "tipo": tipo, "peso": 0, "ano": ano}
 
-    for values in monthly_dic.values():
+    for values in monthly_dict.values():
         mes = values["mes"]
         tipo = values["tipo"]
         peso = values["peso"]
@@ -147,10 +149,10 @@ def monthly_lineplot(monthly_dic):
 
 def home(request):
     current_date = datetime.now()
-    monthly_dic = get_mothly_dataframe(current_date.year)
+    monthly_dict = get_mothly_data(current_date.year)
 
-    dashboard_stats = get_dashboard_stats(monthly_dic)
-    plot = monthly_lineplot(monthly_dic)
+    dashboard_stats = get_dashboard_stats(monthly_dict)
+    plot = monthly_lineplot(monthly_dict)
 
     context = {
         "stats_dict": dashboard_stats,
