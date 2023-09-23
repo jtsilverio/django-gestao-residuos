@@ -7,27 +7,26 @@ from apps.home.models import EntradaMensal, SaidaMensal
 
 
 def get_mothly_data(year: int):
-    monthly_dict = {}
+    monthly_data = {}
 
-    for i, data in enumerate(
-        list(EntradaMensal.objects.filter(ano=year).all().values())
-    ):
-        del data["id"]
-        data["peso"] = float(data["peso"])
-        data["tipo"] = "entrada"
-        monthly_dict[i] = data
+    i = 0
+    for entrada in list(EntradaMensal.objects.filter(ano=year).all().values()):
+        del entrada["id"]
+        entrada["peso"] = float(entrada["peso"])
+        entrada["tipo"] = "entrada"
+        monthly_data[i] = entrada
         i += 1
 
-    for i, data in enumerate(list(SaidaMensal.objects.filter(ano=year).all().values())):
-        del data["id"]
-        data["peso"] = float(data["peso"])
-        data["receita"] = float(data["receita"])
-        data["custo"] = float(data["custo"])
-        data["tipo"] = "saida"
-        monthly_dict[i] = data
+    for saida in list(SaidaMensal.objects.filter(ano=year).all().values()):
+        del saida["id"]
+        saida["peso"] = float(saida["peso"])
+        saida["receita"] = float(saida["receita"])
+        saida["custo"] = float(saida["custo"])
+        saida["tipo"] = "saida"
+        monthly_data[i] = saida
         i += 1
 
-    return monthly_dict
+    return monthly_data
 
 
 def get_dashboard_stats(monthly_dict):
