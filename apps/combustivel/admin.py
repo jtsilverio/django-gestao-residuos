@@ -1,7 +1,5 @@
 from django.contrib import admin
 
-from apps.combustivel.models import Combustivel
-
 
 class CombustivelAdmin(admin.ModelAdmin):
     list_display = [
