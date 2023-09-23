@@ -29,19 +29,19 @@ def get_mothly_data(year: int):
     return monthly_data
 
 
-def get_dashboard_stats(monthly_dict):
+def get_dashboard_stats(monthly_data):
     current_month = datetime.now().month - 1
     dashboard_stats = {}
     for tipo_dado in ["entrada", "saida"]:
         current_month_peso = sum(
             v["peso"]
-            for v in monthly_dict.values()
+            for v in monthly_data.values()
             if v["mes"] == current_month and v["tipo"] == tipo_dado
         )
 
         last_month_peso = sum(
             v["peso"]
-            for v in monthly_dict.values()
+            for v in monthly_data.values()
             if v["mes"] == current_month - 1 and v["tipo"] == tipo_dado
         )
 
@@ -51,8 +51,8 @@ def get_dashboard_stats(monthly_dict):
             if last_month_peso
             else (9999 if current_month_peso else 0)
         )
-        # convert to int
         diff_perc = int(diff_perc)
+
         trend = "up" if last_month_peso <= current_month_peso else "down"
 
         dashboard_stats[tipo_dado] = {
@@ -148,10 +148,9 @@ def monthly_lineplot(monthly_dict):
 
 def home(request):
     current_date = datetime.now()
-    monthly_dict = get_mothly_data(current_date.year)
-
-    dashboard_stats = get_dashboard_stats(monthly_dict)
-    plot = monthly_lineplot(monthly_dict)
+    monthly_data = get_mothly_data(current_date.year)
+    dashboard_stats = get_dashboard_stats(monthly_data)
+    plot = monthly_lineplot(monthly_data)
 
     context = {
         "stats_dict": dashboard_stats,
