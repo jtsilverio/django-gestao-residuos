@@ -5,18 +5,38 @@ from apps.localidade.models import Localidade
 
 
 class Agua(models.Model):
-    id_agua = models.AutoField(primary_key=True)
+    class FonteCaptacao(models.IntegerChoices):
+        DISTRIBUICAO = (0, "Distribuição Municipal")
+        POCO = (1, "Poço")
+
+    id_agua = models.AutoField(
+        primary_key=True,
+    )
+
     id_localidade = models.ForeignKey(
         Localidade,
         models.DO_NOTHING,
         db_column="id_localidade",
     )
+
     id_fornecedor = models.ForeignKey(
         Fornecedor,
         models.DO_NOTHING,
         db_column="id_fornecedor",
     )
-    dt_agua = models.DateField(null=False, blank=False)
+
+    fonte_captacao = models.IntegerField(
+        choices=FonteCaptacao.choices,
+        null=False,
+        blank=False,
+        default=FonteCaptacao.DISTRIBUICAO,
+    )
+
+    dt_agua = models.DateField(
+        null=False,
+        blank=False,
+    )
+
     consumo = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -24,6 +44,7 @@ class Agua(models.Model):
         null=False,
         blank=False,
     )
+
     custo = models.DecimalField(
         max_digits=10,
         decimal_places=2,
