@@ -15,8 +15,10 @@ def get_mothly_data(year: int):
         entrada["peso"] = float(entrada["peso"])
         entrada["tipo"] = "entrada"
         monthly_data[i] = entrada
+        print(monthly_data[i])
         i += 1
-
+        
+    
     for saida in list(SaidaMensal.objects.filter(ano=year).all().values()):
         del saida["id"]
         saida["peso"] = float(saida["peso"])
@@ -24,13 +26,14 @@ def get_mothly_data(year: int):
         saida["custo"] = float(saida["custo"])
         saida["tipo"] = "saida"
         monthly_data[i] = saida
+        print(monthly_data[i])
         i += 1
 
     return monthly_data
 
 
 def get_dashboard_stats(monthly_data):
-    current_month = datetime.now().month - 1
+    current_month = datetime.now().month
     dashboard_stats = {}
     for tipo_dado in ["entrada", "saida"]:
         current_month_peso = sum(
