@@ -15,7 +15,6 @@ def get_mothly_data(year: int):
         entrada["peso"] = float(entrada["peso"])
         entrada["tipo"] = "entrada"
         monthly_data[i] = entrada
-        print(monthly_data[i])
         i += 1
         
     
@@ -26,7 +25,6 @@ def get_mothly_data(year: int):
         saida["custo"] = float(saida["custo"])
         saida["tipo"] = "saida"
         monthly_data[i] = saida
-        print(monthly_data[i])
         i += 1
 
     return monthly_data
