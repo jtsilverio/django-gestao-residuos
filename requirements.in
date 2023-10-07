@@ -3,4 +3,3 @@ django-filter
 django-environ
 gunicorn
 plotly
-pandas
