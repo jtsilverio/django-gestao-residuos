@@ -14,6 +14,7 @@ from os import path
 from pathlib import Path
 
 import environ
+from django.contrib.messages import constants as messages
 from django.core.management.utils import get_random_secret_key
 
 env = environ.Env(
@@ -159,7 +160,6 @@ STATIC_ROOT = path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-from django.contrib.messages import constants as messages
 
 # MESSAGES CSS TAGS
 MESSAGE_TAGS = {

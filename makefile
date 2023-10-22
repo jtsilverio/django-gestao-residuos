@@ -9,8 +9,8 @@ endif
 
 .PHONY: clean_migrations
 clean_migrations:
-	find . -path "*/migrations/*.py" -not -name "__init__.py" -not -path "./venv/*" -not -path "*/home/migrations/*.py" -delete
-	find . -path "*/migrations/*.pyc" -not -path "./venv/*" -not -path "*/home/migrations/*.pyc" -delete
+	find . -path "*/migrations/*.py" -not -name "__init__.py" -not -path "./.venv/*" -not -path "./venv/*" -not -path "*/home/migrations/0001_create_database_views.py" -delete
+	find . -path "*/migrations/*.pyc" -not -path "./.venv/*" -not -path "./venv/*" -not -path "*/home/migrations/0001_create_database_views.pyc" -delete
 	rm db.sqlite3
 
 install-pip-tools:
