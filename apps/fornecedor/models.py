@@ -12,7 +12,6 @@ class Fornecedor(models.Model):
         db_table="fornecedor_destinacao",
         related_name="fornecedor",
         blank=True,
-        null=True,
     )
 
     def __str__(self):
