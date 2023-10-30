@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.combustivel.models import Fornecedor
+from apps.fornecedor.models import Fornecedor
 from apps.localidade.models import Localidade
 
 

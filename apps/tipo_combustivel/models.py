@@ -7,7 +7,7 @@ class TipoCombustivel(models.Model):
     nome = models.CharField(max_length=20, null=False, blank=False)
 
     def __str__(self):
-        return f"ID:{self.id}:{self.nome}"
+        return self.nome
 
     class Meta:
         db_table = "tp_combustivel"

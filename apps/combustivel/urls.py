@@ -11,4 +11,14 @@ urlpatterns = [
         views.Create.as_view(),
         name="create",
     ),
+    path(
+        "edit/<int:pk>/",
+        views.Edit.as_view(),
+        name="edit",
+    ),
+    path(
+        "delete/<int:pk>/",
+        views.delete,
+        name="delete",
+    ),
 ]

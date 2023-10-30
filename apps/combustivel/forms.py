@@ -1,35 +1,63 @@
 from django.forms import (
+    DateInput,
     ModelChoiceField,
     ModelForm,
+    NumberInput,
     Select,
     SelectDateWidget,
     TextInput,
 )
 
 from apps.combustivel.models import Combustivel
-from apps.fornecedor.models import Fornecedor
 
 
 class CombustivelForm(ModelForm):
-    id_fornecedor = ModelChoiceField(
-        label="Fornecedor",
-        queryset=Fornecedor.objects.filter(tp_fornecedor__exact="Combustível"),
-        widget=Select(attrs={"class": "form-select"}),
-    )
-
     class Meta:
         model = Combustivel
         fields = [
             "dt_combustivel",
-            "id_fornecedor",
-            "tp_combustivel",
+            "id_localidade",
+            "fonte",
+            "id_tp_combustivel",
             "consumo",
-            "custo",
         ]
         labels = {
+            "id_localidade": "Localidade",
+            "id_tp_combustivel": "Tipo Combustível",
             "dt_combustivel": "Data",
-            "id_fornecedor": "Fornecedor",
-            "tp_combustivel": "Tipo de Combustível",
-            "consumo": "Consumo",
-            "custo": "Custo",
+            "fonte": "Fonte",
+            "consumo": "Consumo (L)",
+        }
+        widgets = {
+            "id_localidade": Select(
+                attrs={
+                    "class": "form-select",
+                    "placeholder": "Localidade",
+                }
+            ),
+            "id_tp_combustivel": Select(
+                attrs={
+                    "class": "form-select",
+                    "placeholder": "Tipo Combustível",
+                }
+            ),
+            "dt_combustivel": DateInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Data",
+                    "type": "date",
+                }
+            ),
+            "fonte": Select(
+                attrs={
+                    "class": "form-select",
+                    "placeholder": "Fonte",
+                }
+            ),
+            "consumo": NumberInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Consumo",
+                }
+            ),
         }

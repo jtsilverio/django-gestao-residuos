@@ -25,7 +25,7 @@ def index(request):
     context["title"] = APP_TITLE
     context["app_name"] = APP_NAME
 
-    return render(request, "tipo_combustivel/index.html", context)
+    return render(request, f"{APP_NAME}/index.html", context)
 
 
 class Create(SuccessMessageMixin, CreateView):

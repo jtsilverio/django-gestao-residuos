@@ -1,40 +1,46 @@
 from django.db import models
 
-from apps.fornecedor.models import Fornecedor
 from apps.localidade.models import Localidade
+from apps.tipo_combustivel.models import TipoCombustivel
 
 
 class Combustivel(models.Model):
+    FONTE_CHOICES = [
+        ("Fixa", "Fonte Fixa"),
+        ("Móvel", "Fonte Móvel"),
+    ]
+
     id = models.AutoField(primary_key=True)
     id_localidade = models.ForeignKey(
         Localidade,
         models.DO_NOTHING,
         db_column="id_localidade",
     )
-    id_fornecedor = models.ForeignKey(
-        Fornecedor,
+    id_tp_combustivel = models.ForeignKey(
+        TipoCombustivel,
         models.DO_NOTHING,
-        db_column="id_fornecedor",
+        db_column="id_tp_combustivel",
     )
-    dt_combustivel = models.DateField(null=False, blank=False)
-    tp_combustivel = models.CharField(max_length=20)
+    dt_combustivel = models.DateField(
+        null=False,
+        blank=False,
+    )
+    fonte = models.CharField(
+        max_length=5,
+        choices=FONTE_CHOICES,
+        null=False,
+        blank=False,
+    )
     consumo = models.DecimalField(
         max_digits=10,
-        decimal_places=2,
+        decimal_places=3,
         default=0,
         null=False,
         blank=False,
     )
-    custo = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        default=0,
-        null=True,
-        blank=True,
-    )
 
     def __str__(self):
-        return f"ID:{self.id_combustivel}"
+        return f"ID:{self.id}"
 
     class Meta:
         db_table = "combustivel"

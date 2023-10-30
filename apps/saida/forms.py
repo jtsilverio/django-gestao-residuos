@@ -1,6 +1,6 @@
 from django import forms
 
-from apps.combustivel.models import Fornecedor
+from apps.fornecedor.models import Fornecedor
 from apps.saida.models import Saida
 
 
@@ -49,7 +49,10 @@ class SaidaForm(forms.ModelForm):
                 },
             ),
             "id_localidade": forms.Select(
-                attrs={"class": "form-select", "placeholder": "Localidade"}
+                attrs={
+                    "class": "form-select",
+                    "placeholder": "Localidade",
+                }
             ),
             "id_classe": forms.Select(
                 attrs={"class": "form-select", "placeholder": "Classe"}
