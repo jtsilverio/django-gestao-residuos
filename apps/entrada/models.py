@@ -3,6 +3,7 @@ from django.db import models
 from apps.classe.models import Classe
 from apps.localidade.models import Localidade
 
+
 class Entrada(models.Model):
     id_entrada = models.AutoField(primary_key=True)
     data = models.DateField(null=False, blank=False)
@@ -16,7 +17,6 @@ class Entrada(models.Model):
 
     def __str__(self):
         return f"ID:{self.id_entrada}"
-        
 
     class Meta:
         db_table = "entrada"

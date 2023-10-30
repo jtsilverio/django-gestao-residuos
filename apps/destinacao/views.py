@@ -8,7 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from apps.destinacao.filters import DestinacaoFilter
 from apps.destinacao.forms import DestinacaoForm
 from apps.destinacao.models import Destinacao
-from apps.utils import count_active_filters
+from apps.utils.count_active_filters import count_active_filters
 
 PAGESIZE = 15
 

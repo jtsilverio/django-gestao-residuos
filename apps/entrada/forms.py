@@ -1,6 +1,7 @@
 from django.forms import ModelChoiceField, ModelForm, Select, DateInput, NumberInput
 from apps.entrada.models import Entrada
 
+
 class EntradaForm(ModelForm):
     class Meta:
         model = Entrada

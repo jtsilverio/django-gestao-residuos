@@ -5,7 +5,7 @@ from apps.localidade.models import Localidade
 
 
 class Combustivel(models.Model):
-    id_combustivel = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     id_localidade = models.ForeignKey(
         Localidade,
         models.DO_NOTHING,
@@ -17,6 +17,7 @@ class Combustivel(models.Model):
         db_column="id_fornecedor",
     )
     dt_combustivel = models.DateField(null=False, blank=False)
+    tp_combustivel = models.CharField(max_length=20)
     consumo = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -28,8 +29,8 @@ class Combustivel(models.Model):
         max_digits=10,
         decimal_places=2,
         default=0,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
@@ -39,4 +40,4 @@ class Combustivel(models.Model):
         db_table = "combustivel"
         verbose_name = "Combustível"
         verbose_name_plural = "Combustíveis"
-        ordering = ["-id_combustivel"]
+        ordering = ["-id"]

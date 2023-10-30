@@ -4,7 +4,6 @@ from django.forms import (
     ModelForm,
     ModelMultipleChoiceField,
     Select,
-    SelectMultiple,
     TextInput,
 )
 

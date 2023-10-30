@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "apps.agua.apps.AguaConfig",
     "apps.combustivel.apps.CombustivelConfig",
     "apps.eletricidade.apps.EletricidadeConfig",
+    "apps.tipo_combustivel.apps.TipoCombustivelConfig",
 ]
 
 MIDDLEWARE = [
@@ -169,3 +170,5 @@ MESSAGE_TAGS = {
     messages.WARNING: "bg-warning text-white",
     messages.ERROR: "bg-danger text-white",
 }
+
+PAGESIZE = 15

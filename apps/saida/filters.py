@@ -1,6 +1,5 @@
 import django_filters
 from django.forms import (
-    BooleanField,
     CheckboxInput,
     CheckboxSelectMultiple,
     DateInput,
@@ -10,7 +9,6 @@ from django.forms import (
 from apps.classe.models import Classe
 from apps.fornecedor.models import Destinacao, Fornecedor
 from apps.localidade.models import Localidade
-from apps.saida.models import Saida
 
 
 class SaidaFilter(django_filters.FilterSet):

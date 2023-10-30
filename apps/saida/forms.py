@@ -1,6 +1,6 @@
 from django import forms
 
-from apps.fornecedor.models import Fornecedor
+from apps.combustivel.models import Fornecedor
 from apps.saida.models import Saida
 
 

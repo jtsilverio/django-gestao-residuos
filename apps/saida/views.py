@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
@@ -11,14 +12,12 @@ from apps.saida.forms import SaidaForm
 from apps.saida.models import Saida
 from apps.utils import count_active_filters
 
-PAGESIZE = 15
-
 
 def saida_index(request):
     page_number = request.GET.get("page")
     saida_filter = SaidaFilter(request.GET, queryset=Saida.objects.all())
 
-    saida_paginated = Paginator(saida_filter.qs, PAGESIZE)
+    saida_paginated = Paginator(saida_filter.qs, settings.PAGESIZE)
     saida = saida_paginated.get_page(page_number)
 
     context = {

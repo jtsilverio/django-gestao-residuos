@@ -8,7 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from apps.fornecedor.filters import FornecedorFilter
 from apps.fornecedor.forms import FornecedorForm
 from apps.fornecedor.models import Fornecedor
-from apps.utils import count_active_filters
+from apps.utils.count_active_filters import count_active_filters
 
 PAGESIZE = 15
 

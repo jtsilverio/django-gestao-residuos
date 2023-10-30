@@ -8,7 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from apps.classe.filters import ClasseFilter
 from apps.classe.forms import ClasseForm
 from apps.classe.models import Classe
-from apps.utils import count_active_filters
+from apps.utils.count_active_filters import count_active_filters
 
 PAGESIZE = 15
 

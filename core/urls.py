@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+# fmt: off
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.home.urls")),
@@ -28,4 +29,6 @@ urlpatterns = [
     path("agua/", include("apps.agua.urls")),
     path("eletricidade/", include("apps.eletricidade.urls")),
     path("combustivel/", include("apps.combustivel.urls")),
+    path("tipo_combustivel/", include("apps.tipo_combustivel.urls", namespace="tipo_combustivel")),
 ]
+# fmt: on

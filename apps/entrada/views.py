@@ -17,7 +17,7 @@ PAGESIZE = 15
 def entrada_index(request):
     page_number = request.GET.get("page")
     entradas_filter = EntradaFilter(request.GET, queryset=Entrada.objects.all())
-    
+
     entradas_paginated = Paginator(entradas_filter.qs, PAGESIZE)
     entradas = entradas_paginated.get_page(page_number)
 
