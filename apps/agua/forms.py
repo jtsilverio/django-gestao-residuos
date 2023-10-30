@@ -5,25 +5,23 @@ from django.forms import (
     Select,
 )
 
-from apps.combustivel.models import Combustivel
+from apps.agua.models import Agua
 
 
-class CombustivelForm(ModelForm):
+class AguaForm(ModelForm):
     class Meta:
-        model = Combustivel
+        model = Agua
         fields = [
-            "dt_combustivel",
+            "data",
             "id_localidade",
             "fonte",
-            "id_tp_combustivel",
             "consumo",
         ]
         labels = {
             "id_localidade": "Localidade",
-            "id_tp_combustivel": "Tipo Combustível",
-            "dt_combustivel": "Data",
+            "dt_agua": "Data",
             "fonte": "Fonte",
-            "consumo": "Consumo (L)",
+            "consumo": "Consumo (m³)",
         }
         widgets = {
             "id_localidade": Select(
@@ -32,13 +30,7 @@ class CombustivelForm(ModelForm):
                     "placeholder": "Localidade",
                 }
             ),
-            "id_tp_combustivel": Select(
-                attrs={
-                    "class": "form-select",
-                    "placeholder": "Tipo Combustível",
-                }
-            ),
-            "dt_combustivel": DateInput(
+            "data": DateInput(
                 attrs={
                     "class": "form-control",
                     "placeholder": "Data",

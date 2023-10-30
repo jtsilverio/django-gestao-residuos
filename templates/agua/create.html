@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cadastro de {{title}}
+{% endblock title %}
+
+{% block content %}
+<section class="card border-0 shadow">
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row g-2">
+                {% for field in form %}
+                <div class="col">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <div class="col mt-auto">
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

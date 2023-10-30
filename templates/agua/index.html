@@ -8,18 +8,16 @@
                 <th class="align-middle border-0 rounded-start">Data</th>
                 <th class="align-middle border-0 ">Localidade</th>
                 <th class="align-middle border-0 ">Fonte</th>
-                <th class="align-middle border-0 ">Tipo Combustível</th>
-                <th class="align-middle border-0">Consumo (L)</th>
+                <th class="align-middle border-0">Consumo (m³)</th>
                 <th class="align-middle border-0 rounded-end"></th>
             </tr>
         </thead>
         <tbody>
             {% for entry in object_list %}
             <tr class="align-middle">
-                <td>{{ entry.dt_combustivel }}</td>
+                <td>{{ entry.data }}</td>
                 <td>{{ entry.id_localidade }}</td>
                 <td>{{ entry.fonte }}</td>
-                <td>{{ entry.id_tp_combustivel }}</td>
                 <td>{{ entry.consumo }}</td>
                 <td>
                     <div class="d-flex justify-content-end me-3">
