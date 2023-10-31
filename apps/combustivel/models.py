@@ -1,7 +1,7 @@
 from django.db import models
 
-from apps.localidade.models import Localidade
-from apps.tipo_combustivel.models import TipoCombustivel
+from apps.cluster.models import Cluster
+from apps.unidade_consumo.models import TipoCombustivel
 
 
 class Combustivel(models.Model):
@@ -11,10 +11,10 @@ class Combustivel(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    id_localidade = models.ForeignKey(
-        Localidade,
+    id_cluster = models.ForeignKey(
+        Cluster,
         models.DO_NOTHING,
-        db_column="id_localidade",
+        db_column="id_cluster",
     )
     id_tp_combustivel = models.ForeignKey(
         TipoCombustivel,

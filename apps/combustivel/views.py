@@ -32,7 +32,7 @@ class Create(SuccessMessageMixin, CreateView):
     model = Model
     form_class = ModelForm
     template_name = f"{APP_NAME}/create.html"
-    success_message = "Tipo de Combustível Cadastrado"
+    success_message = f"{APP_TITLE} Cadastrado"
     extra_context = {"title": APP_TITLE, "app_name": APP_NAME}
     success_url = reverse_lazy(f"{APP_NAME}:index")
 
@@ -41,7 +41,7 @@ class Edit(SuccessMessageMixin, UpdateView):
     model = Model
     form_class = ModelForm
     template_name = f"{APP_NAME}/edit.html"
-    success_message = "Tipo de Combustível Atualizado"
+    success_message = f"{APP_TITLE} Atualizado"
     extra_context = {"title": APP_TITLE, "app_name": APP_NAME}
     success_url = reverse_lazy(f"{APP_NAME}:index")
 
@@ -51,6 +51,6 @@ def delete(request, pk):
 
     if request.method == "POST":
         entry.delete()
-        messages.warning(request, "Tipo de Combustível Excluído")
+        messages.warning(request, f"{APP_TITLE} Excluído")
 
     return redirect(f"{APP_NAME}:index")

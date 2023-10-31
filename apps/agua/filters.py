@@ -2,7 +2,7 @@ from django.forms import DateInput, Select
 from django_filters import ChoiceFilter, DateFilter, FilterSet, ModelChoiceFilter
 
 from apps.agua.models import Agua
-from apps.localidade.models import Localidade
+from apps.cluster.models import Cluster
 
 
 class AguaFilter(FilterSet):
@@ -17,9 +17,9 @@ class AguaFilter(FilterSet):
         ),
     )
 
-    id_localidade = ModelChoiceFilter(
-        label="Localidade",
-        queryset=Localidade.objects.all(),
+    id_cluster = ModelChoiceFilter(
+        label="Cluster",
+        queryset=Cluster.objects.all(),
         widget=Select(attrs={"class": "form-select"}),
     )
 

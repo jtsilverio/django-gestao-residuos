@@ -6,18 +6,18 @@ from apps.agua.models import Agua
 class AguaAdmin(admin.ModelAdmin):
     list_display = [
         "id",
-        "id_localidade",
+        "id_cluster",
         "data",
         "consumo",
     ]
     list_display_links = [
         "id",
-        "id_localidade",
+        "id_cluster",
         "data",
         "consumo",
     ]
-    list_filter = ["id_localidade", "data"]
-    search_fields = ["id_localidade", "data"]
+    list_filter = ["id_cluster", "data"]
+    search_fields = ["id_cluster", "data"]
     list_per_page = 15
 
 

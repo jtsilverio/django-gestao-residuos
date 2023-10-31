@@ -16,7 +16,7 @@ class SaidaForm(forms.ModelForm):
 
         fields = [
             "data",
-            "id_localidade",
+            "id_cluster",
             "id_classe",
             "peso",
             "id_fornecedor",
@@ -29,7 +29,7 @@ class SaidaForm(forms.ModelForm):
 
         labels = {
             "data": "Data de Saída",
-            "id_localidade": "Localidade",
+            "id_cluster": "Cluster",
             "id_classe": "Classe",
             "peso": "Peso",
             "id_fornecedor": "Fornecedor",
@@ -48,10 +48,10 @@ class SaidaForm(forms.ModelForm):
                     "type": "date",
                 },
             ),
-            "id_localidade": forms.Select(
+            "id_cluster": forms.Select(
                 attrs={
                     "class": "form-select",
-                    "placeholder": "Localidade",
+                    "placeholder": "Cluster",
                 }
             ),
             "id_classe": forms.Select(

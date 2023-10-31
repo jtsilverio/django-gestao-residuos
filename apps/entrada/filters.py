@@ -1,17 +1,11 @@
 import django_filters
 from django.forms import (
-    BooleanField,
-    CheckboxInput,
     CheckboxSelectMultiple,
     DateInput,
-    ModelChoiceField,
-    ModelMultipleChoiceField,
-    Select,
-    SelectMultiple,
 )
 
 from apps.classe.models import Classe
-from apps.localidade.models import Localidade
+from apps.cluster.models import Cluster
 
 
 class EntradaFilter(django_filters.FilterSet):
@@ -30,8 +24,8 @@ class EntradaFilter(django_filters.FilterSet):
         queryset=Classe.objects.all(),
         widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
     )
-    id_localidade = django_filters.ModelMultipleChoiceFilter(
-        label="Localidade",
-        queryset=Localidade.objects.all(),
+    id_cluster = django_filters.ModelMultipleChoiceFilter(
+        label="Cluster",
+        queryset=Cluster.objects.all(),
         widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
     )

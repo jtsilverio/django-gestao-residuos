@@ -51,7 +51,7 @@
             <li class="nav-item {% if 'home' in segment %} active {% endif %}">
                 <a href="{% url 'home' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-bar-chart-line-fill me-2"></i>
+                        <i class="bi bi-bar-chart-line-fill "></i>
                     </span>
                     <span class="sidebar-text">Home</span>
                 </a>
@@ -64,7 +64,7 @@
             <!-- <li class="nav-item {% if 'entrada' in segment %} active {% endif %}">
                 <a href="{% url 'entrada' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                        <svg class="icon icon-xs " aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path clip-rule="evenodd"
                                 d="M5.478 5.559A1.5 1.5 0 016.912 4.5H9A.75.75 0 009 3H6.912a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H15a.75.75 0 000 1.5h2.088a1.5 1.5 0 011.434 1.059l2.213 7.191H17.89a3 3 0 00-2.684 1.658l-.256.513a1.5 1.5 0 01-1.342.829h-3.218a1.5 1.5 0 01-1.342-.83l-.256-.512a3 3 0 00-2.684-1.658H3.265l2.213-7.191z"
@@ -82,7 +82,7 @@
             <!-- <li class="nav-item {% if 'saida' in segment %} active {% endif %}">
                 <a href="{% url 'saida' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        <svg class="icon icon-xs " aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M6.5 3c-1.051 0-2.093.04-3.125.117A1.49 1.49 0 002 4.607V10.5h9V4.606c0-.771-.59-1.43-1.375-1.489A41.568 41.568 0 006.5 3zM2 12v2.5A1.5 1.5 0 003.5 16h.041a3 3 0 015.918 0h.791a.75.75 0 00.75-.75V12H2z">
@@ -101,7 +101,7 @@
                     data-bs-toggle="collapse" data-bs-target="#submenu-app">
                     <span>
                         <span class="sidebar-icon">
-                            <i class="bi bi-trash3-fill me-2"></i>
+                            <i class="bi bi-trash3-fill "></i>
                         </span>
                         <span class="sidebar-text">Resíduos</span>
                     </span>
@@ -142,7 +142,7 @@
             <li class="nav-item {% if 'eletricidade' in segment %} active {% endif %}">
                 <a href="{% url 'eletricidade' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-lightning-charge-fill me-2"></i>
+                        <i class="bi bi-lightning-charge-fill "></i>
                     </span>
                     <span class="sidebar-text">Eletricidade</span>
                 </a>
@@ -152,7 +152,7 @@
             <li class="nav-item {% if 'agua' in segment %} active {% endif %}">
                 <a href="{% url 'agua:index' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-droplet-fill me-2"></i>
+                        <i class="bi bi-droplet-fill "></i>
                     </span>
                     <span class="sidebar-text">Água</span>
                 </a>
@@ -162,7 +162,7 @@
             <li class="nav-item {% if 'combustivel' in segment %} active {% endif %}">
                 <a href="{% url 'combustivel:index' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-fuel-pump-fill me-2"></i>
+                        <i class="bi bi-fuel-pump-fill "></i>
                     </span>
                     <span class="sidebar-text">Combustível</span>
                 </a>
@@ -171,13 +171,13 @@
             <!-- Divisão -->
             <hr class="mt-2 mb-2 border-gray-400">
 
-            <!-- Localidade -->
+            <!-- Cluster -->
             <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
-                <a href="{% url 'localidade' %}" class="nav-link">
+                <a href="{% url 'cluster:index' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-geo-alt-fill me-2"></i>
+                        <i class="bi bi-globe-americas"></i>
                     </span>
-                    <span class="sidebar-text">Localidade</span>
+                    <span class="sidebar-text">Clusters</span>
                 </a>
             </li>
 
@@ -186,8 +186,8 @@
             <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
                 <a href="{% url 'fornecedor' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-1" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="icon icon-xs" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" style="width: 17px; height: 17px;">
                             <path
                                 d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 007.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 004.902-5.652l-1.3-1.299a1.875 1.875 0 00-1.325-.549H5.223z">
                             </path>
@@ -204,7 +204,7 @@
             <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
                 <a href="{% url 'classe' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-tags-fill me-2"></i>
+                        <i class="bi bi-tags-fill "></i>
                     </span>
                     <span class="sidebar-text">Classes de Resíduo</span>
                 </a>
@@ -215,7 +215,7 @@
             <li class="nav-item {% if 'destinacao' in segment %} active {% endif %}">
                 <a href="{% url 'destinacao' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-tags-fill me-2"></i>
+                        <i class="bi bi-tags-fill "></i>
                     </span>
                     <span class="sidebar-text">Tipos de Destinação</span>
                 </a>
@@ -225,7 +225,7 @@
             <li class="nav-item {% if 'destinacao' in segment %} active {% endif %}">
                 <a href="{% url 'tipo_combustivel:index' %}" class="nav-link">
                     <span class="sidebar-icon">
-                        <i class="bi bi-tags-fill me-2"></i>
+                        <i class="bi bi-tags-fill "></i>
                     </span>
                     <span class="sidebar-text">Tipos de Combustível</span>
                 </a>
@@ -239,7 +239,7 @@
             <li class="nav-item">
                 <a target="_blank" href="{% url 'admin:index' %}" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                        <svg class="icon icon-xs " fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"

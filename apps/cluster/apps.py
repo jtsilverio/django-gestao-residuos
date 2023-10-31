@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class LocalidadeConfig(AppConfig):
+class ClusterConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.localidade"
+    name = "apps.cluster"

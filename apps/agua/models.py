@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.localidade.models import Localidade
+from apps.cluster.models import Cluster
 
 
 class Agua(models.Model):
@@ -12,10 +12,10 @@ class Agua(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    id_localidade = models.ForeignKey(
-        Localidade,
+    id_cluster = models.ForeignKey(
+        Cluster,
         models.DO_NOTHING,
-        db_column="id_localidade",
+        db_column="id_cluster",
     )
     data = models.DateField(null=False, blank=False)
     fonte = models.CharField(

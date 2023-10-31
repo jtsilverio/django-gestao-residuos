@@ -17,6 +17,8 @@ import environ
 from django.contrib.messages import constants as messages
 from django.core.management.utils import get_random_secret_key
 
+from .lista_estados import ESTADOS_BRASILEIROS
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False),
@@ -52,7 +54,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_filters",
-    "apps.localidade.apps.LocalidadeConfig",
+    "apps.cluster.apps.ClusterConfig",
     "apps.classe.apps.ClasseConfig",
     "apps.destinacao.apps.DestinacaoConfig",
     "apps.entrada.apps.EntradaConfig",
@@ -63,6 +65,7 @@ INSTALLED_APPS = [
     "apps.combustivel.apps.CombustivelConfig",
     "apps.eletricidade.apps.EletricidadeConfig",
     "apps.tipo_combustivel.apps.TipoCombustivelConfig",
+    "apps.unidade_consumo.apps.UnidadeConsumoConfig",
 ]
 
 MIDDLEWARE = [

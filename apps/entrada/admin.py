@@ -7,12 +7,12 @@ class EntradaAdmin(admin.ModelAdmin):
     list_display = [
         "__str__",
         "id_classe",
-        "id_localidade",
+        "id_cluster",
         "data",
         "peso",
     ]
-    list_filter = ["id_classe", "id_localidade", "data"]
-    search_fields = ["id_classe__nome", "id_localidade__nome", "data"]
+    list_filter = ["id_classe", "id_cluster", "data"]
+    search_fields = ["id_classe__nome", "id_cluster__nome", "data"]
     list_per_page = 15
 
 

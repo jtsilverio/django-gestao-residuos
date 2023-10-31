@@ -1,63 +1,61 @@
 {% extends "base_card.html" %}
 {% block title %}
-    Saída
+Saída
 {% endblock title %}
 {% block content %}
-    <div class="table-responsive">
-        <table class="table table-centered mb-0 rounded table-sm">
-            <thead class="thead-light">
-                <tr>
-                    <th class="align-middle border-0 rounded-start">Data</th>
-                    <th class="align-middle border-0">Localidade</th>
-                    <th class="align-middle border-0">Classe</th>
-                    <th class="align-middle border-0">Fornecedor</th>
-                    <th class="align-middle border-0">Destinação</th>
-                    <th class="align-middle border-0">Peso (kg)</th>
-                    <th class="align-middle border-0">Receita</th>
-                    <th class="align-middle border-0">Custo</th>
-                    <th class="align-middle border-0">Nº Evidência</th>
-                    <th class="align-middle border-0">CDF</th>
-                    <th class="align-middle border-0 rounded-end"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for entry in object_list %}
-                    <tr class="align-middle">
-                        <td>{{ entry.data }}</td>
-                        <td>{{ entry.id_localidade }}</td>
-                        <td>{{ entry.id_classe }}</td>
-                        <td>{{ entry.id_fornecedor }}</td>
-                        <td>{{ entry.id_destinacao }}</td>
-                        <td>{{ entry.peso }}</td>
-                        <td>{{ entry.receita }}</td>
-                        <td>{{ entry.custo }}</td>
-                        <td>{{ entry.n_evidencia }}</td>
-                        <td>{{ entry.cdf }}</td>
-                        <td>
-                            <div class="d-flex justify-content-end me-3">
-                                <a href="{% url 'saida_edit' pk=entry.id_saida %}" title="Editar">
-                                    <button class="btn btn-sm shadow-none border-0">
-                                        <i class="bi bi-pencil-square text-secondary"></i>
-                                    </button>
-                                </a>
-                                <form onsubmit="return confirm('Confirmar deleção?');"
-                                      action="{% url 'saida_delete' pk=entry.id_saida %}"
-                                      method="POST"
-                                      value="delete">
-                                    {% csrf_token %}
-                                    <button class="btn btn-sm shadow-none border-0" title="Deletar">
-                                        <i class="bi bi-x-circle text-danger"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="5">Nenhuma saida cadastrada</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<div class="table-responsive">
+    <table class="table table-centered mb-0 rounded table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th class="align-middle border-0 rounded-start">Data</th>
+                <th class="align-middle border-0">Localidade</th>
+                <th class="align-middle border-0">Classe</th>
+                <th class="align-middle border-0">Fornecedor</th>
+                <th class="align-middle border-0">Destinação</th>
+                <th class="align-middle border-0">Peso (kg)</th>
+                <th class="align-middle border-0">Receita</th>
+                <th class="align-middle border-0">Custo</th>
+                <th class="align-middle border-0">Nº Evidência</th>
+                <th class="align-middle border-0">CDF</th>
+                <th class="align-middle border-0 rounded-end"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in object_list %}
+            <tr class="align-middle">
+                <td>{{ entry.data }}</td>
+                <td>{{ entry.id_cluster }}</td>
+                <td>{{ entry.id_classe }}</td>
+                <td>{{ entry.id_fornecedor }}</td>
+                <td>{{ entry.id_destinacao }}</td>
+                <td>{{ entry.peso }}</td>
+                <td>{{ entry.receita }}</td>
+                <td>{{ entry.custo }}</td>
+                <td>{{ entry.n_evidencia }}</td>
+                <td>{{ entry.cdf }}</td>
+                <td>
+                    <div class="d-flex justify-content-end me-3">
+                        <a href="{% url 'saida_edit' pk=entry.id_saida %}" title="Editar">
+                            <button class="btn btn-sm shadow-none border-0">
+                                <i class="bi bi-pencil-square text-secondary"></i>
+                            </button>
+                        </a>
+                        <form onsubmit="return confirm('Confirmar deleção?');"
+                            action="{% url 'saida_delete' pk=entry.id_saida %}" method="POST" value="delete">
+                            {% csrf_token %}
+                            <button class="btn btn-sm shadow-none border-0" title="Deletar">
+                                <i class="bi bi-x-circle text-danger"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma saida cadastrada</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock content %}

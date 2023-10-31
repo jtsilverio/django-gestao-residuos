@@ -1,8 +1,8 @@
 from django.forms import DateInput, Select
 from django_filters import ChoiceFilter, DateFilter, FilterSet, ModelChoiceFilter
 
+from apps.cluster.models import Cluster
 from apps.combustivel.models import Combustivel
-from apps.localidade.models import Localidade
 
 
 class CombustivelFilter(FilterSet):
@@ -17,9 +17,9 @@ class CombustivelFilter(FilterSet):
         ),
     )
 
-    id_localidade = ModelChoiceFilter(
+    id_cluster = ModelChoiceFilter(
         label="Localidade",
-        queryset=Localidade.objects.all(),
+        queryset=Cluster.objects.all(),
         widget=Select(attrs={"class": "form-select"}),
     )
 

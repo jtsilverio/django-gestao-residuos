@@ -7,8 +7,8 @@ from django.forms import (
 )
 
 from apps.classe.models import Classe
+from apps.cluster.models import Cluster
 from apps.fornecedor.models import Destinacao, Fornecedor
-from apps.localidade.models import Localidade
 
 
 class SaidaFilter(django_filters.FilterSet):
@@ -40,9 +40,9 @@ class SaidaFilter(django_filters.FilterSet):
         widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
     )
 
-    id_localidade = django_filters.ModelMultipleChoiceFilter(
-        label="Localidade",
-        queryset=Localidade.objects.all(),
+    id_cluster = django_filters.ModelMultipleChoiceFilter(
+        label="Cluster",
+        queryset=Cluster.objects.all(),
         widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
     )
 

@@ -13,18 +13,18 @@ class AguaForm(ModelForm):
         model = Agua
         fields = [
             "data",
-            "id_localidade",
+            "id_cluster",
             "fonte",
             "consumo",
         ]
         labels = {
-            "id_localidade": "Localidade",
+            "id_cluster": "Cluster",
             "dt_agua": "Data",
             "fonte": "Fonte",
             "consumo": "Consumo (m³)",
         }
         widgets = {
-            "id_localidade": Select(
+            "id_cluster": Select(
                 attrs={
                     "class": "form-select",
                     "placeholder": "Localidade",

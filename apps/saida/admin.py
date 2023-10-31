@@ -7,7 +7,7 @@ class SaidaAdmin(admin.ModelAdmin):
     list_display = [
         "__str__",
         "id_classe",
-        "id_localidade",
+        "id_cluster",
         "id_fornecedor",
         "id_destinacao",
         "data",
@@ -19,14 +19,14 @@ class SaidaAdmin(admin.ModelAdmin):
     ]
     list_filter = [
         "id_classe",
-        "id_localidade",
+        "id_cluster",
         "id_fornecedor",
         "id_destinacao",
         "data",
     ]
     search_fields = [
         "id_classe__nome",
-        "id_localidade__nome",
+        "id_cluster__nome",
         "id_fornecedor__nome",
         "id_destinacao__nome",
         "data",

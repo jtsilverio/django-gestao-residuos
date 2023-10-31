@@ -23,12 +23,13 @@ urlpatterns = [
     path("entrada/", include("apps.entrada.urls")),
     path("saida/", include("apps.saida.urls")),
     path("fornecedor/", include("apps.fornecedor.urls")),
-    path("localidade/", include("apps.localidade.urls")),
+    path("cluster/", include("apps.cluster.urls")),
     path("classe/", include("apps.classe.urls")),
     path("destinacao/", include("apps.destinacao.urls")),
     path("agua/", include("apps.agua.urls")),
     path("eletricidade/", include("apps.eletricidade.urls")),
     path("combustivel/", include("apps.combustivel.urls")),
     path("tipo_combustivel/", include("apps.tipo_combustivel.urls", namespace="tipo_combustivel")),
+    path("unidade_consumo/", include("apps.unidade_consumo.urls", namespace="unidade_consumo")),
 ]
 # fmt: on

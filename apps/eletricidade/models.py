@@ -1,15 +1,15 @@
 from django.db import models
 
+from apps.cluster.models import Cluster
 from apps.fornecedor.models import Fornecedor
-from apps.localidade.models import Localidade
 
 
 class Eletricidade(models.Model):
     id_eletricidade = models.AutoField(primary_key=True)
-    id_localidade = models.ForeignKey(
-        Localidade,
+    id_cluster = models.ForeignKey(
+        Cluster,
         models.DO_NOTHING,
-        db_column="id_localidade",
+        db_column="id_cluster",
     )
     id_fornecedor = models.ForeignKey(
         Fornecedor,

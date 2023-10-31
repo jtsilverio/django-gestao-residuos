@@ -13,23 +13,23 @@ class CombustivelForm(ModelForm):
         model = Combustivel
         fields = [
             "dt_combustivel",
-            "id_localidade",
+            "id_cluster",
             "fonte",
             "id_tp_combustivel",
             "consumo",
         ]
         labels = {
-            "id_localidade": "Localidade",
+            "id_cluster": "Cluster",
             "id_tp_combustivel": "Tipo Combustível",
             "dt_combustivel": "Data",
             "fonte": "Fonte",
             "consumo": "Consumo (L)",
         }
         widgets = {
-            "id_localidade": Select(
+            "id_cluster": Select(
                 attrs={
                     "class": "form-select",
-                    "placeholder": "Localidade",
+                    "placeholder": "Cluster",
                 }
             ),
             "id_tp_combustivel": Select(
