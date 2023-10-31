@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "apps.saida.apps.SaidaConfig",
     "apps.fornecedor.apps.FornecedorConfig",
     "apps.home.apps.HomeConfig",
+    "apps.combustivel.apps.CombustivelConfig",
 ]
 
 MIDDLEWARE = [

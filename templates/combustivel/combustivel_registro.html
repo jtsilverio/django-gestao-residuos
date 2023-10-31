@@ -1,20 +1,26 @@
 {% extends "base.html" %}
 
-{%block title%}
-    Registro de combustível
-{% endblock title %}
+{% block title %}Registro de Combustível{% endblock title %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="combustivelreg.js"></script>
+</head>
 <body>
-  <form action="/register" method="post">
-    <label for="date">Data:</label>
-    <input type="date" id="date" name="data">
-    <label for="odometer">Litros:</label>
-    <input type="number" id="litros" name="litros">
-    <label for="gallons">Galões:</label>
-    <input type="number" id="ga" name="galoes">
-    <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
+  <form>
+    <div class="form-group">
+      <label for="data">Data:</label>
+      <input type="date" class="form-control" id="data" name="data">
+    </div>
+    <div class="form-group">
+      <label for="litros">Litros:</label>
+      <input type="number" class="form-control" id="litros" name="litros">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Salvar">
   </form>
 </body>
+</html>
 </html>
 {% endblock content %}
