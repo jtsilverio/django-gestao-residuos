@@ -5,9 +5,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from apps.unidade_consumo.filters import TipoCombustivelFilter as ModelFilter
-from apps.unidade_consumo.forms import TipoCombustivelForm as ModelForm
-from apps.unidade_consumo.models import TipoCombustivel as Model
+from apps.tipo_combustivel.filters import TipoCombustivelFilter as ModelFilter
+from apps.tipo_combustivel.forms import TipoCombustivelForm as ModelForm
+from apps.tipo_combustivel.models import TipoCombustivel as Model
 from apps.utils import (
     create_filtered_context,
     paginate_query,

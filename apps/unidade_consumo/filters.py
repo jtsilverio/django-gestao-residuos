@@ -1,6 +1,6 @@
 import django_filters
 from django.forms import Select, TextInput
-from django_filters import ChoiceFilter, ModelChoiceFilter
+from django_filters import ModelChoiceFilter
 
 from apps.cluster.models import Cluster
 

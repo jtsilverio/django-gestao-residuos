@@ -2,11 +2,11 @@ from django.forms import DateInput, Select
 from django_filters import ChoiceFilter, DateFilter, FilterSet, ModelChoiceFilter
 
 from apps.cluster.models import Cluster
-from apps.combustivel.models import Combustivel
+from apps.eletricidade.models import Eletricidade
 
 
-class CombustivelFilter(FilterSet):
-    dt_combustivel = DateFilter(
+class EletricidadeFilter(FilterSet):
+    data = DateFilter(
         label="Data de Cadastro",
         widget=DateInput(
             attrs={
@@ -20,17 +20,5 @@ class CombustivelFilter(FilterSet):
     id_cluster = ModelChoiceFilter(
         label="Cluster",
         queryset=Cluster.objects.all(),
-        widget=Select(attrs={"class": "form-select"}),
-    )
-
-    fonte = ChoiceFilter(
-        label="Fonte",
-        choices=Combustivel.FONTE_CHOICES,
-        widget=Select(attrs={"class": "form-select"}),
-    )
-
-    id_tp_combustivel = ModelChoiceFilter(
-        label="Tipo de Combustível",
-        queryset=Combustivel.objects.all(),
         widget=Select(attrs={"class": "form-select"}),
     )

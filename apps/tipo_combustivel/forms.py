@@ -1,6 +1,6 @@
 from django.forms import ModelForm, TextInput
 
-from apps.unidade_consumo.models import TipoCombustivel
+from apps.tipo_combustivel.models import TipoCombustivel
 
 
 class TipoCombustivelForm(ModelForm):

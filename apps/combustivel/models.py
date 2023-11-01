@@ -1,7 +1,7 @@
 from django.db import models
 
 from apps.cluster.models import Cluster
-from apps.unidade_consumo.models import TipoCombustivel
+from apps.tipo_combustivel.models import TipoCombustivel
 
 
 class Combustivel(models.Model):
