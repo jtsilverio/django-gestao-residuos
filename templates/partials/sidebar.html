@@ -1,4 +1,8 @@
 {% load static %}
+{% load load_menu %}
+{% load_menu %}
+{% load split %}
+
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
     <a class="navbar-brand me-lg-5" href="/">
         <img class="navbar-brand-dark" src="{% static 'img/brand/leaves.png' %}" alt="Volt logo" />
@@ -47,181 +51,48 @@
 
             <hr class="mt-2 mb-4 border-gray-400">
 
-            <!-- HOME -->
-            <li class="nav-item {% if 'home' in segment %} active {% endif %}">
-                <a href="{% url 'home' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-bar-chart-line-fill "></i>
-                    </span>
-                    <span class="sidebar-text">Home</span>
-                </a>
-            </li>
-
-            <!-- Divisão -->
-            <hr class="mt-2 mb-2 border-gray-400">
-
-            <!-- Resíduos Collapsable -->
+            {% for item in sidebar %}
+            {% if item.submenu %}
             <li class="nav-item">
                 <span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                    data-bs-toggle="collapse" data-bs-target="#submenu-app">
+                    data-bs-toggle="collapse" data-bs-target="#submenu-{{ item.name }}">
                     <span>
                         <span class="sidebar-icon">
-                            <i class="bi bi-trash3-fill "></i>
+                            <i class="{{ item.icon }}"></i>
                         </span>
-                        <span class="sidebar-text">Resíduos</span>
+                        <span class="sidebar-text">{{ item.name }}</span>
                     </span>
                     <span class="link-arrow">
                         <i class="bi bi-caret-right-fill"></i>
                     </span>
                 </span>
 
-                <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false">
-
+                <div class="multi-level collapse" role="list" id="submenu-{{ item.name }}" aria-expanded="false">
+                    {% for subitem in item.submenu %}
                     <ul class="flex-column nav">
                         <li
-                            class="nav-item {% if request.resolver_match.url_name == 'entrada' %}active show{% endif %} ">
-                            <a href=" {% url 'entrada' %}" class="nav-link">
-                                <span class="sidebar-text">Entrada</span>
-                            </a>
-                        </li>
-
-                    </ul>
-
-
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a href="{% url 'saida' %}" class="nav-link">
-                                <span class="sidebar-text">Saída</span>
+                            class="nav-item {% if request.resolver_match.url_name == subitem.url %}active show{% endif %}">
+                            <a href="{% url subitem.url %}" class="nav-link">
+                                <span class="sidebar-text">{{ subitem.name }}</span>
                             </a>
                         </li>
                     </ul>
-
-
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a href="{% url 'fornecedor' %}" class="nav-link">
-                                <span class="sidebar-text">Fornecedor</span>
-                            </a>
-                        </li>
-                    </ul>
-
-
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a href="{% url 'classe' %}" class="nav-link">
-                                <span class="sidebar-text">Classes de Resíduos</span>
-                            </a>
-                        </li>
-                    </ul>
-
-
-                    <ul class="flex-column nav">
-                        <li class="nav-item">
-                            <a href="{% url 'destinacao' %}" class="nav-link">
-                                <span class="sidebar-text">Tipos de Destinação</span>
-                            </a>
-                        </li>
-                    </ul>
-
+                    {% endfor %}
                 </div>
             </li>
-
-
-            <!-- Divisão
-            <hr class="mt-2 mb-2 border-gray-400"> -->
-
-            <!-- Eletricidade -->
-            <li class="nav-item {% if 'eletricidade' in segment %} active {% endif %}">
-                <a href="{% url 'eletricidade:index' %}" class="nav-link">
+            {% else %}
+            <li
+                class="nav-item {% if request.resolver_match.url_name == item.url|split:':'|first %}active show{% endif %}">
+                <a href="{% url item.url %}" class="nav-link d-flex align-items-center ">
                     <span class="sidebar-icon">
-                        <i class="bi bi-lightning-charge-fill "></i>
+                        <i class="{{ item.icon }}"></i>
                     </span>
-                    <span class="sidebar-text">Eletricidade</span>
+                    <span class="sidebar-text">{{ item.name }}</span>
                 </a>
             </li>
+            {% endif %}
+            {% endfor %}
 
-            <!-- Água -->
-            <li class="nav-item {% if 'agua' in segment %} active {% endif %}">
-                <a href="{% url 'agua:index' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-droplet-fill "></i>
-                    </span>
-                    <span class="sidebar-text">Água</span>
-                </a>
-            </li>
-
-            <!-- Combustivel -->
-            <li class="nav-item {% if 'combustivel' in segment %} active {% endif %}">
-                <a href="{% url 'combustivel:index' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-fuel-pump-fill "></i>
-                    </span>
-                    <span class="sidebar-text">Combustível</span>
-                </a>
-            </li>
-
-            <!-- Divisão -->
-            <hr class="mt-2 mb-2 border-gray-400">
-
-            <!-- Cluster -->
-            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
-                <a href="{% url 'cluster:index' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-globe-americas"></i>
-                    </span>
-                    <span class="sidebar-text">Clusters</span>
-                </a>
-            </li>
-
-
-            <!-- Classe de Resíduo
-            <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
-                <a href="{% url 'classe' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-tags-fill "></i>
-                    </span>
-                    <span class="sidebar-text">Classes de Resíduo</span>
-                </a>
-            </li>
-
-
-            <li class="nav-item {% if 'destinacao' in segment %} active {% endif %}">
-                <a href="{% url 'destinacao' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-tags-fill "></i>
-                    </span>
-                    <span class="sidebar-text">Tipos de Destinação</span>
-                </a>
-            </li> -->
-
-            <!-- Tipo Combustível -->
-            <li class="nav-item {% if 'destinacao' in segment %} active {% endif %}">
-                <a href="{% url 'tipo_combustivel:index' %}" class="nav-link">
-                    <span class="sidebar-icon">
-                        <i class="bi bi-tags-fill "></i>
-                    </span>
-                    <span class="sidebar-text">Tipos de Combustível</span>
-                </a>
-            </li>
-
-
-            <!-- Divisão -->
-            <hr class="mt-2 mb-2 border-gray-400">
-
-            <!-- Admin -->
-            <li class="nav-item">
-                <a target="_blank" href="{% url 'admin:index' %}" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <svg class="icon icon-xs " fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Administrador</span>
-                </a>
-            </li>
 
         </ul>
     </div>

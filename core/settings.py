@@ -95,6 +95,8 @@ TEMPLATES = [
             "libraries": {
                 "is_checkbox": "templatetags.is_checkbox",
                 "page_parser": "templatetags.page_parser",
+                "load_menu": "templatetags.load_menu",
+                "split": "templatetags.split",
             },
         },
     },

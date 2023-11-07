@@ -1,65 +1,61 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <!-- Primary Meta Tags -->
-        <title>Gestão de Resíduos</title>
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Favicon -->
-        <link rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="{% static 'img/brand/leaves_32.png' %}">
-        <link rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="{% static 'img/brand/leaves_16.png' %}">
 
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="theme-color" content="#ffffff">
-        <link type="text/css" href="{% static 'css/volt.css' %}" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Primary Meta Tags -->
+    <title>Gestão de Resíduos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/brand/leaves_32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/brand/leaves_16.png' %}">
 
-        <!-- Specific Page CSS goes HERE  -->
-        {% block stylesheets %}
-        {% endblock stylesheets %}
-    </head>
-    <body>
-        <!-- SIDEBAR -->
-        {% include "partials/sidebar.html" %}
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link type="text/css" href="{% static 'css/volt.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-        <main class="content">
-            <!-- alerts -->
-            {% include "partials/messages.html" %}
+    <!-- Specific Page CSS goes HERE  -->
+    {% block stylesheets %}
+    {% endblock stylesheets %}
+</head>
 
-            <!-- NAVBAR -->
-            <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
-                <div class="container-fluid px-0">
-                    <div class="d-flex justify-content-between w-200"
-                         id="navbarSupportedContent">
-                        <div class="d-flex align-items-center">
-                            <div class="px-2 pb-2">
-                                <h2>
-                                    {% block title %}
-                                    {% endblock title %}
-                                </h2>
-                            </div>
+<body>
+    <!-- SIDEBAR -->
+    {% include "partials/sidebar.html"%}
+
+    <main class="content">
+        <!-- alerts -->
+        {% include "partials/messages.html" %}
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
+            <div class="container-fluid px-0">
+                <div class="d-flex justify-content-between w-200" id="navbarSupportedContent">
+                    <div class="d-flex align-items-center">
+                        <div class="px-2 pb-2">
+                            <h2>
+                                {% block title %}
+                                {% endblock title %}
+                            </h2>
                         </div>
                     </div>
                 </div>
-            </nav>
-  
+            </div>
+        </nav>
 
-            {% block content %}
-            {% endblock content %}
-            {% include "partials/footer.html" %}
-        </main>
 
-        <!-- JS  -->
-        {% include "partials/scripts.html" %}
-        {% block javascripts %}
-        {% endblock javascripts %}
-    </body>
+        {% block content %}
+        {% endblock content %}
+        {% include "partials/footer.html" %}
+    </main>
+
+    <!-- JS  -->
+    {% include "partials/scripts.html" %}
+    {% block javascripts %}
+    {% endblock javascripts %}
+</body>
+
 </html>
